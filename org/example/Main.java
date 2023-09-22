@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.States.RockState;
 import org.example.classes.ComputerTool;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -9,6 +10,15 @@ public class Main {
         ComputerTool computerTool = new ComputerTool();
 
         computerTool.displayTool();
+        computerTool.changeTool();
+        computerTool.displayTool();
+        computerTool.changeTool();
+        computerTool.displayTool();
+        computerTool.changeTool();
+        computerTool.displayTool();
+        computerTool.changeTool();
+        computerTool.displayTool();
+
 
     }
 }
