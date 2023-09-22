@@ -5,17 +5,25 @@ public class Computer {
     private int computerChoice;
     private int computerScore;
 
+    ComputerTool computerTool = new ComputerTool();
+
     public Computer(int computerChoice, int computerScore) {
         this.computerChoice = computerChoice;
         this.computerScore = computerScore;
     }
 
-    public int getComputerChoice() {
-        return computerChoice;
+    public void getComputerChoice() {
+        computerTool.displayTool();
     }
 
+    /*
     public void setComputerChoice(int computerChoice) {
         this.computerChoice = computerChoice;
+    }
+
+     */
+    public void setComputerChoice() {
+        computerTool.changeTool();
     }
 
     public int getComputerScore() {
