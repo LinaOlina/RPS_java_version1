@@ -1,4 +1,6 @@
-package org.example;
+package org.example.States;
+
+import org.example.classes.ComputerTool;
 
 public interface ToolState {
 

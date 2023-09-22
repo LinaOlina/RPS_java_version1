@@ -1,4 +1,7 @@
-package org.example;
+package org.example.classes;
+
+import org.example.States.RockState;
+import org.example.States.ToolState;
 
 public class ComputerTool {
 
