@@ -7,6 +7,7 @@ public class Computer {
 
     ComputerTool computerTool = new ComputerTool();
 
+
     public Computer(int computerChoice, int computerScore) {
         this.computerChoice = computerChoice;
         this.computerScore = computerScore;
