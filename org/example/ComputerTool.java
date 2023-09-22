@@ -2,7 +2,7 @@ package org.example;
 
 public class ComputerTool {
 
-    private ComputerToolState currentState;
+    private ToolState currentState;
 
     public ComputerTool() {
         currentState = new RockState();
@@ -12,7 +12,11 @@ public class ComputerTool {
         currentState.displayTool();
     }
 
-    public void setCurrentState(ComputerToolState state) {
+    public void changeTool() {
+        currentState.updateState(this);
+    }
+
+    public void setCurrentState(ToolState state) {
         currentState = state;
     }
 }
