@@ -4,8 +4,9 @@ package org.example;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello");
-        System.out.println("Hej");
-        System.out.println("Check");
-        }
+        ComputerTool computerTool = new ComputerTool();
+
+        computerTool.displayTool();
+
+    }
 }
