@@ -19,7 +19,7 @@ public class ComputerTool {
         currentState.displayTool();
     }
 
-    public static ToolState changeTool() {
+    public void changeTool() {
         Random random = new Random();
         int choice = random.nextInt(3); // 0 for Rock, 1 for Paper, 2 for Scissors
 
@@ -31,7 +31,7 @@ public class ComputerTool {
             currentState = new ScissorsState();
         }
 
-        return currentState;
+
     }
 
 

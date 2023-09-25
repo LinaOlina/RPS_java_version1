@@ -7,7 +7,7 @@ public class Computer {
     private int computerChoice;
     private int computerScore;
 
-    static ComputerTool computerTool = new ComputerTool();
+    private ComputerTool computerTool = new ComputerTool();
 
 
     public Computer(int computerChoice, int computerScore) {
@@ -16,7 +16,8 @@ public class Computer {
     }
 
     public void getComputerChoice() {
-        computerTool.displayTool();
+         computerTool.displayTool();
+
     }
 
     /*
@@ -25,8 +26,8 @@ public class Computer {
     }
 
      */
-    public static ToolState setComputerChoice() {
-        return computerTool.changeTool();
+    public void setComputerChoice() {
+         computerTool.changeTool();
     }
 
     public int getComputerScore() {
