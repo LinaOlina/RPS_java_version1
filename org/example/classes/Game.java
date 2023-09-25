@@ -4,6 +4,7 @@ import org.example.States.PaperState;
 import org.example.States.RockState;
 import org.example.States.ScissorsState;
 import org.example.States.ToolState;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Scanner;
 
@@ -23,7 +24,7 @@ public class Game {
         this.maxScore = maxScore;
     }
 
-    public static void gameLoop(@org.jetbrains.annotations.NotNull Player player)  {
+    public static void gameLoop(@NotNull Player player)  {
         int round = 0;        // round kan inte vara 0 här för då kommer den att vara 0 hela tiden.
         round++;
         System.out.println("Round " + round + " of " + player.getRounds() + "\n Choose your tool : \n 1. Rock \n 2. Paper \n 3. Scissors \n 4. Exit the game");
