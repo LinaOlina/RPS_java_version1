@@ -17,12 +17,37 @@ public class Game {
     }
 
     public static void gameLoop(Player player)  {
-        int round = 0;
+        int round = 0;        // round kan inte vara 0 här för då kommer den att vara 0 hela tiden.
         round++;
-        System.out.println("Round " + round + " of " + player.getRounds() + "\n Choose your tool : \n 1. Rock \n 2. Paper \n 3. Scissors\n 4. Exit the game");
+        System.out.println("Round " + round + " of " + player.getRounds() + "\n Choose your tool : \n 1. Rock \n 2. Paper \n 3. Scissors \n 4. Exit the game");
         playerChoice = scanner.nextInt();
+
+        evaluateRound(playerChoice);
+        //computer.setComputerChoice();
+        //computer.getComputerChoice();
+
+    }
+
+    public static void evaluateRound(int playerChoice) {
+        switch (playerChoice) {
+            case 1:
+                fetchComputerTool();
+                break;
+            case 2:
+                fetchComputerTool();
+                break;
+            case 3:
+                fetchComputerTool();
+                break;
+            case 4:
+                System.exit(0);
+        }
+    }
+
+    public static void fetchComputerTool() {
         computer.setComputerChoice();
         computer.getComputerChoice();
+
 
     }
     public int getEndScore() {

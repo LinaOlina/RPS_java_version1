@@ -12,6 +12,7 @@ public class MainMenu {
 public static void runMenu() {
     boolean correctNameInput = false;
     String name = "";
+    int rounds = 0;
 
     System.out.println("Hi, and welcome to Rock, Paper, Scissors!");
 
@@ -29,20 +30,18 @@ public static void runMenu() {
         }
     }
 
-    int rounds = 0; // Initialize rounds to 0
-
     while (rounds <= 0 || rounds > 11) {
         try {
             System.out.println("Please choose how many rounds you'd like to play - maximum of 11");
             rounds = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
+            scanner.nextLine();
 
             if (rounds <= 0 || rounds > 11) {
                 throw new IllegalArgumentException("Invalid number of rounds. Please choose between 1 and 11.");
             }
         } catch (java.util.InputMismatchException e) {
             System.out.println("Invalid input. Please enter a valid number.");
-            scanner.nextLine(); // Consume the invalid input
+            scanner.nextLine();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
