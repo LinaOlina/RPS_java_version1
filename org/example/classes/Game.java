@@ -23,7 +23,7 @@ public class Game {
         this.maxScore = maxScore;
     }
 
-    public static void gameLoop(Player player)  {
+    public static void gameLoop(@org.jetbrains.annotations.NotNull Player player)  {
         int round = 0;        // round kan inte vara 0 här för då kommer den att vara 0 hela tiden.
         round++;
         System.out.println("Round " + round + " of " + player.getRounds() + "\n Choose your tool : \n 1. Rock \n 2. Paper \n 3. Scissors \n 4. Exit the game");
@@ -34,7 +34,16 @@ public class Game {
     public static void evaluateRound(int playerChoice) {
         switch (playerChoice) {
             case 1:
-                playerChoosedRock();
+                //playerChoosedRock();
+                ToolState computerChoice = getCurrentState();
+                String choiceString = computerChoice.toString().toLowerCase();
+                System.out.println("TEST");
+                System.out.println(choiceString);
+                System.out.println(getCurrentState());
+
+                computer.getComputerChoice();
+                System.out.println(computerChoice);
+
                 break;
             case 2:
                 playerChoosedPaper();
@@ -55,14 +64,16 @@ public class Game {
 
      */
 
-    public static boolean playerChoosedRock() {
+    public static void playerChoosedRock() {
         ToolState computerChoice = getCurrentState();
         String choiceString = computerChoice.toString().toLowerCase();
-        boolean isComputerRock = false;
+        System.out.println("TEST");
+        System.out.println(choiceString);
+        System.out.println(getCurrentState());
 
         computer.getComputerChoice();
         System.out.println(computerChoice);
-
+/*
         if (choiceString.contains("rock")) {
             isComputerRock = true;
         } else isComputerRock = false;
@@ -74,7 +85,10 @@ public class Game {
         }
             else if (computerChoice.equals(getCurrentState())) {
             System.out.println("You won!");
-            }
+
+
+ */
+
     }
 
     public static void playerChoosedPaper() {
