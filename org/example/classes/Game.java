@@ -21,11 +21,7 @@ public class Game {
         round++;
         System.out.println("Round " + round + " of " + player.getRounds() + "\n Choose your tool : \n 1. Rock \n 2. Paper \n 3. Scissors \n 4. Exit the game");
         playerChoice = scanner.nextInt();
-
         evaluateRound(playerChoice);
-        //computer.setComputerChoice();
-        //computer.getComputerChoice();
-
     }
 
     public static void evaluateRound(int playerChoice) {
