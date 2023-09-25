@@ -1,6 +1,13 @@
 package org.example.classes;
 
+import org.example.States.PaperState;
+import org.example.States.RockState;
+import org.example.States.ScissorsState;
+import org.example.States.ToolState;
+
 import java.util.Scanner;
+
+import static org.example.classes.ComputerTool.getCurrentState;
 
 public class Game {
     private int endScore;
@@ -27,22 +34,77 @@ public class Game {
     public static void evaluateRound(int playerChoice) {
         switch (playerChoice) {
             case 1:
-                fetchComputerTool();
+                playerChoosedRock();
                 break;
             case 2:
-                fetchComputerTool();
+                playerChoosedPaper();
                 break;
             case 3:
-                fetchComputerTool();
+                playerChoosedScissors();
                 break;
             case 4:
                 System.exit(0);
         }
     }
 
-    public static void fetchComputerTool() {
+    /*
+    public static void fetchComputerTool(int playerChoice) {
         computer.setComputerChoice();
         computer.getComputerChoice();
+    }
+
+     */
+
+    public static boolean playerChoosedRock() {
+        ToolState computerChoice = getCurrentState();
+        String choiceString = computerChoice.toString().toLowerCase();
+        boolean isComputerRock = false;
+
+        computer.getComputerChoice();
+        System.out.println(computerChoice);
+
+        if (choiceString.contains("rock")) {
+            isComputerRock = true;
+        } else isComputerRock = false;
+
+        if(computerChoice.equals(getCurrentState())) {
+            System.out.println("It's a draw!");
+        } else if (computerChoice.equals(getCurrentState())) {
+            System.out.println("You lost ");
+        }
+            else if (computerChoice.equals(getCurrentState())) {
+            System.out.println("You won!");
+            }
+    }
+
+    public static void playerChoosedPaper() {
+        ToolState computerChoice = computer.setComputerChoice();
+        computer.getComputerChoice();
+        System.out.println(computerChoice);
+
+        if(computerChoice.equals(getCurrentState())) {
+            System.out.println("You won!");
+        } else if (computerChoice.equals(getCurrentState())) {
+            System.out.println("It's a draw!");
+        }
+        else if (computerChoice.equals(getCurrentState())) {
+            System.out.println("You lost!");
+        }
+    }
+
+    public static void playerChoosedScissors() {
+        ToolState computerChoice = computer.setComputerChoice();
+        computer.getComputerChoice();
+        System.out.println(computerChoice);
+
+        if(computerChoice.equals(getCurrentState())) {
+            System.out.println("You lost!");
+        } else if (computerChoice.equals(getCurrentState())) {
+            System.out.println("You won! ");
+        }
+        else if (computerChoice.equals(getCurrentState())) {
+            System.out.println("It's a draw!");
+        }
     }
     public int getEndScore() {
         return endScore;

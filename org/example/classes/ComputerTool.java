@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class ComputerTool {
 
-    private ToolState currentState;
+    private static ToolState currentState;
 
     public ComputerTool() {
         currentState = new RockState();
@@ -19,7 +19,7 @@ public class ComputerTool {
         currentState.displayTool();
     }
 
-    public void changeTool() {
+    public static ToolState changeTool() {
         Random random = new Random();
         int choice = random.nextInt(3); // 0 for Rock, 1 for Paper, 2 for Scissors
 
@@ -30,27 +30,17 @@ public class ComputerTool {
         } else {
             currentState = new ScissorsState();
         }
+
+        return currentState;
     }
 
 
     public void setCurrentState(ToolState state) {
         currentState = state;
-/*
-
-    Random random = new Random();
-    int choice = random.nextInt(3); // 0 for Rock, 1 for Paper, 2 for Scissors
-
-        if(choice ==0) {
-        currentState = new RockState();
-    } else if(choice ==1) {
-        currentState = new PaperState();
-    } else {
-        currentState = new ScissorsState();
-    }
-    */
-
-
 }
 
 
+public static ToolState getCurrentState() {
+        return currentState;
+}
 }

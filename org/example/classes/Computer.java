@@ -1,11 +1,13 @@
 package org.example.classes;
 
+import org.example.States.ToolState;
+
 public class Computer {
 
     private int computerChoice;
     private int computerScore;
 
-    ComputerTool computerTool = new ComputerTool();
+    static ComputerTool computerTool = new ComputerTool();
 
 
     public Computer(int computerChoice, int computerScore) {
@@ -23,8 +25,8 @@ public class Computer {
     }
 
      */
-    public void setComputerChoice() {
-        computerTool.changeTool();
+    public static ToolState setComputerChoice() {
+        return computerTool.changeTool();
     }
 
     public int getComputerScore() {
