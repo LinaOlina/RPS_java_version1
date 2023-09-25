@@ -17,9 +17,9 @@ public class Game {
     }
 
     public static void gameLoop(Player player)  {
-        int round = 1;
+        int round = 0;
         round++;
-        System.out.println("Round " + round + " of " + player.getRounds() + ". For Rock, press 1. For Paper, press 2. For Scissors, press 3!");
+        System.out.println("Round " + round + " of " + player.getRounds() + "\n Choose your tool : \n 1. Rock \n 2. Paper \n 3. Scissors\n 4. Exit the game");
         playerChoice = scanner.nextInt();
         computer.setComputerChoice();
         computer.getComputerChoice();
