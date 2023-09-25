@@ -47,8 +47,6 @@ public class Game {
     public static void fetchComputerTool() {
         computer.setComputerChoice();
         computer.getComputerChoice();
-
-
     }
     public int getEndScore() {
         return endScore;

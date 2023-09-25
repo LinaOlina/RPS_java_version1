@@ -32,8 +32,10 @@ public class ComputerTool {
         }
     }
 
-    public void setCurrentState(ToolState state) {
 
+    public void setCurrentState(ToolState state) {
+        currentState = state;
+/*
 
     Random random = new Random();
     int choice = random.nextInt(3); // 0 for Rock, 1 for Paper, 2 for Scissors
@@ -45,6 +47,10 @@ public class ComputerTool {
     } else {
         currentState = new ScissorsState();
     }
+    */
+
 
 }
+
+
 }
