@@ -12,7 +12,7 @@ import static org.example.classes.ComputerTool.getCurrentState;
 
 public class Game {
     private int endScore;
-    private int maxScore = 11;
+    private int maxRounds = 11;
     private static int playerChoice = 0;
 
     static Scanner scanner = new Scanner(System.in);
@@ -22,16 +22,21 @@ public class Game {
 
     public Game(int endScore, int maxScore) {
         this.endScore = endScore;
-        this.maxScore = maxScore;
+        this.maxRounds = maxScore;
     }
 
     public static void gameLoop(@NotNull Player player)  {
-        System.out.println(player.getName());
 
-        round++;
-        System.out.println("Round " + round + " of " + player.getRounds() + "\n Choose your tool : \n 1. Rock \n 2. Paper \n 3. Scissors \n 4. Exit the game");
-        playerChoice = scanner.nextInt();
-        evaluateRound(playerChoice, player);
+        if (round == player.getRounds()){
+            //Call the method WINNER;
+            System.out.println("Game over! ");
+
+        } else {
+            round++;
+            System.out.println("Round " + round + " of " + player.getRounds() + "\n Choose your tool : \n 1. Rock \n 2. Paper \n 3. Scissors \n 4. Exit the game");
+            playerChoice = scanner.nextInt();
+            evaluateRound(playerChoice, player);
+        }
     }
 
     public static void evaluateRound(int playerChoice, Player player) {
@@ -41,10 +46,10 @@ public class Game {
 
                 break;
             case 2:
-                playerChoosedPaper();
+                playerChoosedPaper(player);
                 break;
             case 3:
-                playerChoosedScissors();
+                playerChoosedScissors(player);
                 break;
             case 4:
                 System.exit(0);
@@ -66,11 +71,13 @@ public class Game {
             System.out.println("You won!");
         }
 
+
+
         gameLoop(player);
 
     }
 
-    public static void playerChoosedPaper() {
+    public static void playerChoosedPaper(Player player) {
 
         computer.setComputerChoice();
         ToolState computerChoice = computer.getComputerChoice();
@@ -85,11 +92,11 @@ public class Game {
             System.out.println("You lost!");
         }
 
-
+        gameLoop(player);
 
     }
 
-    public static void playerChoosedScissors() {
+    public static void playerChoosedScissors(Player player) {
 
         computer.setComputerChoice();
         ToolState computerChoice = computer.getComputerChoice();
@@ -104,6 +111,8 @@ public class Game {
             System.out.println("It's a draw!");
         }
 
+
+        gameLoop(player);
     }
     public int getEndScore() {
         return endScore;
@@ -114,10 +123,10 @@ public class Game {
     }
 
     public int getMaxScore() {
-        return maxScore;
+        return maxRounds;
     }
 
     public void setMaxScore(int maxScore) {
-        this.maxScore = maxScore;
+        this.maxRounds = maxScore;
     }
 }
