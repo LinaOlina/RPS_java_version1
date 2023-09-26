@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.classes.Builder;
 import org.example.classes.Game;
 import org.example.classes.Player;
 
@@ -47,7 +48,11 @@ public static void runMenu() {
             System.out.println(e.getMessage());
         }
     }
-    Player player = new Player(name, rounds, 0);
+    Player player = new Builder()
+            .setName(name)
+            .setRounds(rounds)
+            .setUserScore(0)
+            .build();
     gameLoop(player);
 }
 }

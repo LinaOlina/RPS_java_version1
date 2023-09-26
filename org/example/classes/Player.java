@@ -5,10 +5,10 @@ public class Player {
     private int rounds;
     private int userScore;
 
-    public Player(String name, int rounds, int userScore) {
-        this.name = name;
-        this.rounds = rounds;
-        this.userScore = userScore;
+    public Player(Builder builder) {
+        this.name = builder.name;
+        this.rounds = builder.rounds;
+        this.userScore = builder.userScore;
     }
 
     public String getName() {
@@ -34,4 +34,6 @@ public class Player {
     public void setUserScore(int userScore) {
         this.userScore = userScore;
     }
+
+
 }
