@@ -4,14 +4,12 @@ import org.example.States.ToolState;
 
 public class Computer {
 
-    private int computerChoice;
     private int computerScore;
 
     private static ComputerTool computerTool = new ComputerTool();
 
 
-    public Computer(int computerChoice, int computerScore) {
-        this.computerChoice = computerChoice;
+    public Computer(int computerScore) {
         this.computerScore = computerScore;
     }
 
@@ -20,12 +18,6 @@ public class Computer {
         return ComputerTool.getCurrentState();
     }
 
-    /*
-    public void setComputerChoice(int computerChoice) {
-        this.computerChoice = computerChoice;
-    }
-
-     */
     public void setComputerChoice() {
          computerTool.changeTool();
     }

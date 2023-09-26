@@ -1,7 +1,6 @@
 package org.example.classes;
 
 public class Player {
-
     private String name;
     private int rounds;
     private int userScore;

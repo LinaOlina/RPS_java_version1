@@ -30,17 +30,15 @@ public class ComputerTool {
         } else {
             currentState = new ScissorsState();
         }
-
-
     }
 
 
     public void setCurrentState(ToolState state) {
         currentState = state;
-}
+    }
 
 
-public static ToolState getCurrentState() {
+    public static ToolState getCurrentState() {
         return currentState;
-}
+    }
 }
