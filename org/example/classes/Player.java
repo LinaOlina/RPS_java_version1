@@ -1,14 +1,14 @@
 package org.example.classes;
 
 public class Player {
-    private String name;
-    private int rounds;
-    private int userScore;
+    private  String name;
+    private  int rounds;
+    private  int userScore;
 
-    public Player(Builder builder) {
-        this.name = builder.name;
-        this.rounds = builder.rounds;
-        this.userScore = builder.userScore;
+    public Player(String name, int rounds, int userScore) {
+        this.name = name;
+        this.rounds = rounds;
+        this.userScore = userScore;
     }
 
     public String getName() {
