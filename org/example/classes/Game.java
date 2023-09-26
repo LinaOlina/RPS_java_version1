@@ -17,6 +17,7 @@ public class Game {
 
     static Scanner scanner = new Scanner(System.in);
     static Computer computer = new Computer(1, 0);
+    static int round = 0;        // round kan inte vara 0 här för då kommer den att vara 0 hela tiden.
 
 
     public Game(int endScore, int maxScore) {
@@ -25,17 +26,19 @@ public class Game {
     }
 
     public static void gameLoop(@NotNull Player player)  {
-        int round = 0;        // round kan inte vara 0 här för då kommer den att vara 0 hela tiden.
+        System.out.println(player.getName());
+
         round++;
         System.out.println("Round " + round + " of " + player.getRounds() + "\n Choose your tool : \n 1. Rock \n 2. Paper \n 3. Scissors \n 4. Exit the game");
         playerChoice = scanner.nextInt();
-        evaluateRound(playerChoice);
+        evaluateRound(playerChoice, player);
     }
 
-    public static void evaluateRound(int playerChoice) {
+    public static void evaluateRound(int playerChoice, Player player) {
         switch (playerChoice) {
             case 1:
-                playerChoosedRock();
+                playerChoosedRock(player);
+
                 break;
             case 2:
                 playerChoosedPaper();
@@ -49,10 +52,10 @@ public class Game {
     }
 
 
-    public static void playerChoosedRock() {
+    public static void playerChoosedRock(Player player) {
         computer.setComputerChoice();
         ToolState computerChoice = computer.getComputerChoice();
-        System.out.println(computerChoice + "hej");
+        System.out.println(computerChoice);
 
         if(computerChoice instanceof RockState) {
             System.out.println("It's a draw!");
@@ -62,65 +65,45 @@ public class Game {
         } else if(computerChoice instanceof ScissorsState) {
             System.out.println("You won!");
         }
-/*
-        if (choiceString.contains("rock")) {
-            isComputerRock = true;
-        } else isComputerRock = false;
 
-        if(computerChoice.equals(getCurrentState())) {
-            System.out.println("It's a draw!");
-        } else if (computerChoice.equals(getCurrentState())) {
-            System.out.println("You lost ");
-        }
-            else if (computerChoice.equals(getCurrentState())) {
-            System.out.println("You won!");
-
-
- */
+        gameLoop(player);
 
     }
 
     public static void playerChoosedPaper() {
-        //ToolState computerChoice = getCurrentState();
-        computer.setComputerChoice();
-        computer.getComputerChoice();
-        //System.out.println(getCurrentState());
 
-        /*
+        computer.setComputerChoice();
+        ToolState computerChoice = computer.getComputerChoice();
         System.out.println(computerChoice);
 
-        if(computerChoice.equals(getCurrentState())) {
+        if(computerChoice instanceof RockState) {
             System.out.println("You won!");
-        } else if (computerChoice.equals(getCurrentState())) {
-            System.out.println("It's a draw!");
         }
-        else if (computerChoice.equals(getCurrentState())) {
+        else if(computerChoice instanceof PaperState) {
+            System.out.println("It's a draw!");
+        } else if(computerChoice instanceof ScissorsState) {
             System.out.println("You lost!");
         }
 
-         */
+
+
     }
 
     public static void playerChoosedScissors() {
-        computer.setComputerChoice();
-        computer.getComputerChoice();
-        //System.out.println(getCurrentState());
-        /*
 
-        ToolState computerChoice = computer.setComputerChoice();
-        computer.getComputerChoice();
+        computer.setComputerChoice();
+        ToolState computerChoice = computer.getComputerChoice();
         System.out.println(computerChoice);
 
-        if(computerChoice.equals(getCurrentState())) {
+        if(computerChoice instanceof RockState) {
             System.out.println("You lost!");
-        } else if (computerChoice.equals(getCurrentState())) {
-            System.out.println("You won! ");
         }
-        else if (computerChoice.equals(getCurrentState())) {
+        else if(computerChoice instanceof PaperState) {
+            System.out.println("You win!");
+        } else if(computerChoice instanceof ScissorsState) {
             System.out.println("It's a draw!");
         }
 
-         */
     }
     public int getEndScore() {
         return endScore;

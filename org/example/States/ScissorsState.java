@@ -11,4 +11,9 @@ public class ScissorsState implements ToolState {
     public void updateState(ComputerTool computerTool) {
         computerTool.setCurrentState(new ScissorsState());
     }
+
+    @Override
+    public String toString() {
+        return "ScissorState";
+    }
 }

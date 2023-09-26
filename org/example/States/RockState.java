@@ -11,4 +11,9 @@ public class RockState implements ToolState {
     public void updateState(ComputerTool computerTool) {
         computerTool.setCurrentState(new RockState());
     }
+
+    @Override
+    public String toString() {
+        return "RockState";
+    }
 }
