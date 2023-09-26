@@ -16,7 +16,7 @@ public class ComputerTool {
     }
 
     public void displayTool() {
-        currentState.displayTool();
+      currentState.displayTool();
     }
 
     public void changeTool() {

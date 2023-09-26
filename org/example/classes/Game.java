@@ -36,7 +36,6 @@ public class Game {
         switch (playerChoice) {
             case 1:
                 playerChoosedRock();
-
                 break;
             case 2:
                 playerChoosedPaper();
@@ -49,22 +48,20 @@ public class Game {
         }
     }
 
-    /*
-    public static void fetchComputerTool(int playerChoice) {
-        computer.setComputerChoice();
-        computer.getComputerChoice();
-    }
-
-     */
 
     public static void playerChoosedRock() {
         computer.setComputerChoice();
-        computer.getComputerChoice();
+        ToolState computerChoice = computer.getComputerChoice();
+        System.out.println(computerChoice + "hej");
 
-      //  ToolState computerChoice = computer.getComputerChoice();
-      //  String choiceString = computerChoice.toString().toLowerCase();
-       // System.out.println(getCurrentState());
-
+        if(computerChoice instanceof RockState) {
+            System.out.println("It's a draw!");
+        }
+        else if(computerChoice instanceof PaperState) {
+            System.out.println("Computer won!");
+        } else if(computerChoice instanceof ScissorsState) {
+            System.out.println("You won!");
+        }
 /*
         if (choiceString.contains("rock")) {
             isComputerRock = true;
