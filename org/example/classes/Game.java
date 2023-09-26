@@ -29,7 +29,7 @@ public class Game {
 
         if (round == player.getRounds()){
             //Call the method WINNER;
-            System.out.println("Game over! ");
+            printWinner(player);
 
         } else {
             round++;
@@ -66,13 +66,16 @@ public class Game {
             System.out.println("It's a draw!");
         }
         else if(computerChoice instanceof PaperState) {
-            System.out.println("Computer won!");
+            System.out.println("You lost!");
+            computer.setComputerScore(computer.getComputerScore() + 1);
         } else if(computerChoice instanceof ScissorsState) {
             System.out.println("You won!");
+            player.setUserScore(player.getUserScore() + 1);
+
         }
 
 
-
+        printScore(player);
         gameLoop(player);
 
     }
@@ -85,13 +88,16 @@ public class Game {
 
         if(computerChoice instanceof RockState) {
             System.out.println("You won!");
+            player.setUserScore(player.getUserScore() + 1);
+
         }
         else if(computerChoice instanceof PaperState) {
             System.out.println("It's a draw!");
         } else if(computerChoice instanceof ScissorsState) {
             System.out.println("You lost!");
+            computer.setComputerScore(computer.getComputerScore() + 1);
         }
-
+        printScore(player);
         gameLoop(player);
 
     }
@@ -104,14 +110,16 @@ public class Game {
 
         if(computerChoice instanceof RockState) {
             System.out.println("You lost!");
+            computer.setComputerScore(computer.getComputerScore() + 1);
         }
         else if(computerChoice instanceof PaperState) {
             System.out.println("You win!");
+            player.setUserScore(player.getUserScore() + 1);
         } else if(computerChoice instanceof ScissorsState) {
             System.out.println("It's a draw!");
         }
 
-
+        printScore(player);
         gameLoop(player);
     }
     public int getEndScore() {
@@ -128,5 +136,33 @@ public class Game {
 
     public void setMaxScore(int maxScore) {
         this.maxRounds = maxScore;
+    }
+
+    public static void printScore(Player player){
+        System.out.println(player.getName() + " has " + player.getUserScore() + " points");
+        System.out.println("Computer has " + computer.getComputerScore() + " points");
+        System.out.println();
+        System.out.println("__________________________________________________________");
+        System.out.println();
+    }
+
+    public static void printWinner(Player player){
+
+        if (player.getUserScore() == computer.getComputerScore()){
+            System.out.println("It's a tie, you get one more chance to win!");
+            System.out.println(player.getName() + " has " + player.getUserScore() + " points");
+            System.out.println("Computer has " + computer.getComputerScore() + " points");
+            player.setRounds(player.getRounds() + 1);
+            gameLoop(player);
+        } else if (player.getUserScore() > computer.getComputerScore()) {
+            player.setUserScore(player.getUserScore() + 1);
+            System.out.println("You win!!");
+            System.out.println("Game over.");
+        }
+        else {
+            computer.setComputerScore(computer.getComputerScore() + 1);
+            System.out.println("You lost, try again!");
+            System.out.println("Game over, you lost");
+        }
     }
 }
