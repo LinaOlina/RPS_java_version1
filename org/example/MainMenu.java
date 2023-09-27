@@ -48,18 +48,13 @@ public static void runMenu() {
             System.out.println(e.getMessage());
         }
     }
-    Player player = new Builder(name, rounds, 0)
-            .name(name)
-            .rounds(rounds)
-            .build();
-
-/*
+    Player player = new Builder()
             .setName(name)
             .setRounds(rounds)
             .setUserScore(0)
             .build();
     gameLoop(player);
 
- */
+
 }
 }

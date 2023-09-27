@@ -2,10 +2,11 @@ package org.example.classes;
 
 public class Builder {
 
-  private  String name;
-   private int rounds;
-   private int userScore;
+    String name;
+    int rounds;
+    int userScore;
 
+   /*
     public Builder(String name, int rounds, int userScore) {
         this.name = name;
         this.rounds = rounds;
@@ -13,23 +14,26 @@ public class Builder {
 
     }
 
-    public Builder name(String name) {
+    */
+
+    public  Builder setName(String name) {
         this.name = name;
         return this;
     }
 
-    public Builder rounds(int rounds) {
+    public  Builder setRounds(int rounds) {
         this.rounds = rounds;
         return this;
     }
 
-    public Builder userScore(int userScore)      {
+    public  Builder setUserScore(int userScore) {
         this.userScore = userScore;
         return this;
     }
 
+
     public Player build() {
-        return new Player(name, rounds, userScore);
+        return new Player(this);
     }
 
 }
