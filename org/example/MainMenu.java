@@ -56,7 +56,7 @@ public static void runMenu() {
             .setUserScore(0)
             .build();
     gameLoop(player);
-   // gameHistory.printGameHistory();
+
 
 }
 }

@@ -3,7 +3,9 @@ package org.example.classes;
 import org.example.States.ToolState;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.example.classes.Game.gameHistoryList;
 
@@ -86,11 +88,20 @@ public class GameHistory {
     public static void printGameHistory() {
         for (GameHistory round : gameHistoryList) {
             System.out.println("ROUND NUMBER: " + round.history_roundNo + " \n -------------- \n" +
-                     round.history_playerName +
-                    ", choice: " + round.history_playerChoice +
-                    "\n Computer choice: " + round.history_computerChoice +
+                     round.history_playerName +"'s"+
+                    " choice: " + round.history_playerChoice +
+                    "\n Computer's choice: " + round.history_computerChoice +
                     " \n " +round.history_playerName+ " score: " + round.history_playerScore +
-                    ", Computer score: " + round.history_computerScore + "\n \n ");
+                    " - Computer score: " + round.history_computerScore + "\n \n ");
         }
+        List<GameHistory> sortedGameHistory = gameHistoryList.stream()
+                .sorted(Comparator.comparing(round -> round.history_playerName))
+                .collect(Collectors.toList());
+
+        // Print the sorted results
+        System.out.println("Sorted Results:");
+        sortedGameHistory.forEach(round -> System.out.println("Round " + round.history_roundNo + " - " + round.history_playerName + " : " + round.history_playerScore + " | " +
+                "Computer: " + round.history_computerScore));
     }
+
 }

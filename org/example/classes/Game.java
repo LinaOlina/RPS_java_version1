@@ -7,8 +7,10 @@ import org.example.States.ToolState;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Game {
 
@@ -19,13 +21,13 @@ public class Game {
     static Computer computer = new Computer( 0);
     static List<GameHistory> gameHistoryList = new ArrayList<>();
 
-
     static int round = 0;
 
-
-
-    public Game(int maxRounds) {
+    public Game(int maxRounds, Scanner scanner,  Computer computer, List<GameHistory> gameHistoryList) {
         this.maxRounds = maxRounds;
+        this.scanner = scanner;
+        this.computer = computer;
+        this.gameHistoryList = gameHistoryList;
     }
 
     public static void gameLoop(@NotNull Player player)  {
@@ -159,9 +161,23 @@ public class Game {
         }
         else {
             computer.setComputerScore(computer.getComputerScore() + 1);
-            System.out.println("You lost, try again!");
-            System.out.println("Game over, you lost");
+           // System.out.println("Game over, you lost");
         }
         GameHistory.printGameHistory();
+        //System.out.println("Game over, you lost");
+        System.out.println();
+
+        /*
+        List<GameHistory> sortedGameHistory = gameHistoryList.stream()
+                .sorted(Comparator.comparing(round -> round.getRoundResult(player.getName())))
+                .collect(Collectors.toList());
+
+        // Print the sorted results
+        System.out.println("Game Over! Sorted Results:");
+        sortedGameHistory.forEach(round -> System.out.println(round.getRoundResult(player.getName())));
+
+         */
+
+
     }
 }
