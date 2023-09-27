@@ -6,6 +6,8 @@ import org.example.States.ScissorsState;
 import org.example.States.ToolState;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -15,6 +17,8 @@ public class Game {
 
     static Scanner scanner = new Scanner(System.in);
     static Computer computer = new Computer( 0);
+    static List<GameHistory> gameHistoryList = new ArrayList<>();
+
 
     static int round = 0;
 
@@ -25,6 +29,7 @@ public class Game {
     }
 
     public static void gameLoop(@NotNull Player player)  {
+
 
         if (round == player.getRounds()){
             printWinner(player);
@@ -71,7 +76,10 @@ public class Game {
             System.out.println("You won!");
             player.setUserScore(player.getUserScore() + 1);
         }
+
         printScore(player);
+        GameHistory gameHistory = new GameHistory(round, player.getName(), computerChoice, "Rock", player.getUserScore(), computer.getComputerScore());
+        gameHistoryList.add(gameHistory);
         gameLoop(player);
     }
 
@@ -93,6 +101,8 @@ public class Game {
             computer.setComputerScore(computer.getComputerScore() + 1);
         }
         printScore(player);
+        GameHistory gameHistory = new GameHistory(round, player.getName(), computerChoice, "Paper", player.getUserScore(), computer.getComputerScore());
+        gameHistoryList.add(gameHistory);
         gameLoop(player);
     }
 
@@ -114,6 +124,8 @@ public class Game {
             System.out.println("It's a draw!");
         }
         printScore(player);
+        GameHistory gameHistory = new GameHistory(round, player.getName(), computerChoice, "Scissors", player.getUserScore(), computer.getComputerScore());
+        gameHistoryList.add(gameHistory);
         gameLoop(player);
     }
 
@@ -143,11 +155,13 @@ public class Game {
             player.setUserScore(player.getUserScore() + 1);
             System.out.println("You win!!");
             System.out.println("Game over.");
+            System.out.println();
         }
         else {
             computer.setComputerScore(computer.getComputerScore() + 1);
             System.out.println("You lost, try again!");
             System.out.println("Game over, you lost");
         }
+        GameHistory.printGameHistory();
     }
 }
