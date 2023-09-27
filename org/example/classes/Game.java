@@ -15,6 +15,7 @@ public class Game {
 
     static Scanner scanner = new Scanner(System.in);
     static Computer computer = new Computer( 0);
+
     static int round = 0;
 
 
