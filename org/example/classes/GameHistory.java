@@ -83,23 +83,6 @@ public class GameHistory {
         this.history_computerScore = getHistory_computerScore;
     }
 
-    /*
-    public List <GameHistory> getGameResult() {
-        return gameResult;
-    }
-
-    public void setGameResult(List<GameHistory> gameResult) {
-        this.gameResult = gameResult;
-    }
-
-    public List <GameHistory> addingRoundInformation(String history_playerChoice, String history_playerScore, String history_computerChoice, String history_computerScore) {
-        GameHistory round = new GameHistory(history_playerChoice, history_playerScore, history_computerChoice, history_computerScore);
-        gameResult.add(round);
-        return gameResult;
-    }
-
-     */
-
     public static void printGameHistory() {
         for (GameHistory round : gameHistoryList) {
             System.out.println("ROUND NUMBER: " + round.history_roundNo + " \n -------------- \n" +

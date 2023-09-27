@@ -10,20 +10,6 @@ public class Player {
         this.rounds = builder.rounds;
         this.userScore = builder.userScore;
     }
-/*
-    public String getName() {
-        return name;
-    }
-
-    public int getRounds() {
-        return rounds;
-    }
-
-    public int getUserScore() {
-        return userScore;
-    }
-
- */
 
     public String getName() {
         return name;
