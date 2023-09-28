@@ -18,7 +18,7 @@ public class MainMenu {
     static int opponentPlayer = 0;
 
     public static void runMenu(boolean isNewGame) {
-         // Flag to determine if it's a new game
+        System.out.println("Test");
 
             if (isNewGame == true) {
                 // If it's a new game, prompt for name, rounds, and opponentPlayer
