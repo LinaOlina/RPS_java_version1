@@ -16,17 +16,20 @@ public class MainMenu {
     static String name = ""; // Initialize with an empty name
     static int rounds = 0;
     static int opponentPlayer = 0;
+    static int round = 0;
 
     public static void runMenu(boolean isNewGame) {
         System.out.println("Test");
 
-            if (isNewGame == true) {
+            if (isNewGame) {
                 // If it's a new game, prompt for name, rounds, and opponentPlayer
                 getName();
                 getRounds();
                 getOpponentPlayer();
             }
-            else if(isNewGame == false) {
+            else if(!isNewGame) {
+
+
                 getRounds();
                 getOpponentPlayer();
             }
@@ -42,7 +45,8 @@ public class MainMenu {
                     .setOpponentPlayer(opponentPlayer)
                     .build();
 
-            gameLoop(player, isNewGame);
+
+            gameLoop(player, isNewGame, round);
 
     }
 
@@ -127,9 +131,8 @@ public class MainMenu {
                 System.out.println("Invalid input. Please enter '1' to play again or 'quit' to exit.");
             }
         System.out.println("The value of the boolean is : " + isNewGame);
-            rounds = 0;
             opponentPlayer = 0;
-            player.setRounds(0);
+
         runMenu(isNewGame);
     }
 }

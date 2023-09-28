@@ -92,7 +92,7 @@ public class GameHistory {
                     " choice: " + round.history_playerChoice +
                     "\n Computer's choice: " + round.history_computerChoice +
                     " \n " +round.history_playerName+ " score: " + round.history_playerScore +
-                    " - Computer score: " + round.history_computerScore + "\n \n ");
+                    " - Computer score: " + round.history_computerScore + "\n \n -------------- \n");
         }
         List<GameHistory> sortedGameHistory = gameHistoryList.stream()
                 .sorted(Comparator.comparing(round -> round.history_playerName))
