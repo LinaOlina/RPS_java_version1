@@ -8,19 +8,46 @@ import org.example.classes.Player;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static org.example.Main.isNewGame;
 import static org.example.classes.Game.gameLoop;
 
 public class MainMenu {
     static Scanner scanner = new Scanner(System.in);
+    static String name = ""; // Initialize with an empty name
+    static int rounds = 0;
+    static int opponentPlayer = 0;
 
-    public static void runMenu() {
+    public static void runMenu(boolean isNewGame) {
+         // Flag to determine if it's a new game
+
+            if (isNewGame == true) {
+                // If it's a new game, prompt for name, rounds, and opponentPlayer
+                getName();
+                getRounds();
+                getOpponentPlayer();
+            }
+            else if(isNewGame == false) {
+                getRounds();
+                getOpponentPlayer();
+            }
+
+            String opponent_Player = validateOpponent(opponentPlayer);
+
+            System.out.println("\n " + name + " VS " + opponent_Player + "! Game starts now. \n");
+
+            Player player = new Builder()
+                    .setName(name)
+                    .setRounds(rounds)
+                    .setUserScore(0)
+                    .setOpponentPlayer(opponentPlayer)
+                    .build();
+
+            gameLoop(player, isNewGame);
+
+    }
+
+    public static void getName() {
         boolean correctNameInput = false;
-        String name = "";
-        int rounds = 0;
-        int opponentPlayer = 0;
-
-        System.out.println("Hi, and welcome to Rock, Paper, Scissors!");
-
         while (!correctNameInput) {
             System.out.println("Please input your name");
             name = scanner.nextLine();
@@ -34,6 +61,9 @@ public class MainMenu {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public static void getRounds() {
 
         while (rounds <= 0 || rounds > Game.maxRounds) {
             try {
@@ -51,52 +81,55 @@ public class MainMenu {
                 System.out.println(e.getMessage());
             }
         }
+    }
 
-        while (true) {
+    public static void getOpponentPlayer() {
+        while (opponentPlayer < 1 || opponentPlayer > 3) {
             try {
                 System.out.println("Please enter the opponent you'd like to meet during this game. \n 1. Slumpis - randomizes its move. \n 2. Klockis - chooses its move based on the clock. \n 3. Namnis - chooses its move based on your name. ");
                 opponentPlayer = scanner.nextInt();
+                scanner.nextLine();
 
                 if (opponentPlayer < 1 || opponentPlayer > 3) {
                     throw new IllegalArgumentException("Invalid number, please choose a number between 1-3");
                 }
-                break;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Try again.");
                 scanner.nextLine(); // Consume the invalid input
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
-            System.out.println("You chose opponent number " + opponentPlayer);
         }
+    }
 
-        String opponent_Player = validateOpponent(opponentPlayer);
-
-        System.out.println("\n " + name + " VS " + opponent_Player + "! Game starts now. \n");
-
-    Player player = new Builder()
-            .setName(name)
-            .setRounds(rounds)
-            .setUserScore(0)
-            .setOpponentPlayer(opponentPlayer)
-            .build();
-
-    gameLoop(player);
-
-}
-
-public static String validateOpponent(int opponentPlayer) {
+    public static String validateOpponent(int opponentPlayer) {
         String opponent = "";
-        if(opponentPlayer == 1) {
+        if (opponentPlayer == 1) {
             opponent = "Slumpis";
-        }
-        else if (opponentPlayer == 2) {
+        } else if (opponentPlayer == 2) {
             opponent = "Klockis";
-        }
-        else if(opponentPlayer == 3) {
+        } else if (opponentPlayer == 3) {
             opponent = "Namnis";
         }
         return opponent;
-}
-}
+    }
 
+    public static void playAgain(boolean isNewGame, Player player) {
+
+            System.out.println("Press 1 to play again or type 'quit' to exit:");
+            String userInput = scanner.nextLine().trim();
+
+            if ("quit".equalsIgnoreCase(userInput)) {
+                System.exit(0);
+            } else if ("1".equals(userInput)) {
+                isNewGame = false;
+            } else {
+                System.out.println("Invalid input. Please enter '1' to play again or 'quit' to exit.");
+            }
+        System.out.println("The value of the boolean is : " + isNewGame);
+            rounds = 0;
+            opponentPlayer = 0;
+            player.setRounds(0);
+        runMenu(isNewGame);
+    }
+}
