@@ -12,6 +12,7 @@ import java.util.Random;
 public class ComputerTool {
 
     private static ToolState currentState;
+    private Random random;
 
     public ComputerTool() {
         currentState = new RockState();
@@ -24,17 +25,17 @@ public class ComputerTool {
     public void changeTool(Player player) {
 
         if(player.getOpponentPlayer() == 1) {
-            slumpisTool();
+            slumpis();
         }
         else if (player.getOpponentPlayer() == 2) {
-            klockisTool();
+            klockis();
         }
         else if (player.getOpponentPlayer() == 3) {
-            namnisTool(player);
+            namnis(player);
         }
     }
 
-    public void slumpisTool() {
+    public void slumpis() {
         Random random = new Random();
         int choice = random.nextInt(3);
 
@@ -47,12 +48,11 @@ public class ComputerTool {
         }
     }
 
-    public void klockisTool() {
+    public void klockis() {
 
         LocalTime currentTime = LocalTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH-mm-ss");
         String formattedTime = currentTime.format(formatter);
-
         int second = currentTime.getSecond() % 10;
 
         if (second == 1 || second == 3 || second == 9) {
@@ -64,8 +64,26 @@ public class ComputerTool {
         }
     }
 
-    public void namnisTool(Player player) {
+    public void namnis(Player player) {
+        long seed = player.getName().hashCode() + System.currentTimeMillis();
+        random = new Random();
 
+        random.setSeed(seed);
+
+        int randomNumber = random.nextInt(3);
+        System.out.println(randomNumber);
+
+        switch (randomNumber) {
+            case 0:
+                currentState = new RockState();
+                break;
+            case 1:
+                currentState = new PaperState();
+                break;
+            case 2:
+                currentState = new ScissorsState();
+                break;
+        }
     }
 
 
