@@ -5,6 +5,8 @@ import org.example.States.RockState;
 import org.example.States.ScissorsState;
 import org.example.States.ToolState;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class ComputerTool {
@@ -34,7 +36,7 @@ public class ComputerTool {
 
     public void slumpisTool() {
         Random random = new Random();
-        int choice = random.nextInt(3); // 0 for Rock, 1 for Paper, 2 for Scissors
+        int choice = random.nextInt(3);
 
         if (choice == 0) {
             currentState = new RockState();
@@ -47,6 +49,19 @@ public class ComputerTool {
 
     public void klockisTool() {
 
+        LocalTime currentTime = LocalTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH-mm-ss");
+        String formattedTime = currentTime.format(formatter);
+
+        int second = currentTime.getSecond() % 10;
+
+        if (second == 1 || second == 3 || second == 9) {
+            currentState = new RockState();
+        } else if (second == 2 || second == 4 || second == 6) {
+            currentState = new PaperState();
+        } else if (second == 0 || second == 5 || second == 7 || second == 8) {
+            currentState = new ScissorsState();
+        }
     }
 
     public void namnisTool(Player player) {

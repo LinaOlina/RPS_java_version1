@@ -161,23 +161,8 @@ public class Game {
         }
         else {
             computer.setComputerScore(computer.getComputerScore() + 1);
-           // System.out.println("Game over, you lost");
         }
         GameHistory.printGameHistory();
-        //System.out.println("Game over, you lost");
         System.out.println();
-
-        /*
-        List<GameHistory> sortedGameHistory = gameHistoryList.stream()
-                .sorted(Comparator.comparing(round -> round.getRoundResult(player.getName())))
-                .collect(Collectors.toList());
-
-        // Print the sorted results
-        System.out.println("Game Over! Sorted Results:");
-        sortedGameHistory.forEach(round -> System.out.println(round.getRoundResult(player.getName())));
-
-         */
-
-
     }
 }

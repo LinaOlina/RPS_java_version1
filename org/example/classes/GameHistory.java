@@ -99,7 +99,7 @@ public class GameHistory {
                 .collect(Collectors.toList());
 
         // Print the sorted results
-        System.out.println("Sorted Results:");
+        System.out.println("Final outcome \n");
         sortedGameHistory.forEach(round -> System.out.println("Round " + round.history_roundNo + " - " + round.history_playerName + " : " + round.history_playerScore + " | " +
                 "Computer: " + round.history_computerScore));
     }
