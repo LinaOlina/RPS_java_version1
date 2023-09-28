@@ -70,6 +70,10 @@ public class MainMenu {
             System.out.println("You chose opponent number " + opponentPlayer);
         }
 
+        String opponent_Player = validateOpponent(opponentPlayer);
+
+        System.out.println("\n " + name + " VS " + opponent_Player + "! Game starts now. \n");
+
     Player player = new Builder()
             .setName(name)
             .setRounds(rounds)
@@ -79,6 +83,20 @@ public class MainMenu {
 
     gameLoop(player);
 
+}
+
+public static String validateOpponent(int opponentPlayer) {
+        String opponent = "";
+        if(opponentPlayer == 1) {
+            opponent = "Slumpis";
+        }
+        else if (opponentPlayer == 2) {
+            opponent = "Klockis";
+        }
+        else if(opponentPlayer == 3) {
+            opponent = "Namnis";
+        }
+        return opponent;
 }
 }
 
