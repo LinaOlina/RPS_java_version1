@@ -63,7 +63,7 @@ public class Game {
 
     public static void playerChoosedRock(Player player) {
 
-        computer.setComputerChoice();
+        computer.setComputerChoice(player);
         ToolState computerChoice = computer.getComputerChoice();
         System.out.println("You have chosen Rock");
 
@@ -87,7 +87,7 @@ public class Game {
 
     public static void playerChoosedPaper(Player player) {
 
-        computer.setComputerChoice();
+        computer.setComputerChoice(player);
         ToolState computerChoice = computer.getComputerChoice();
         System.out.println("You have chosen Paper");
 
@@ -110,7 +110,7 @@ public class Game {
 
     public static void playerChoosedScissors(Player player) {
 
-        computer.setComputerChoice();
+        computer.setComputerChoice(player);
         ToolState computerChoice = computer.getComputerChoice();
         System.out.println("You have chosen Scissors");
 

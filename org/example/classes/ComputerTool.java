@@ -19,7 +19,20 @@ public class ComputerTool {
       currentState.displayTool();
     }
 
-    public void changeTool() {
+    public void changeTool(Player player) {
+
+        if(player.getOpponentPlayer() == 1) {
+            slumpisTool();
+        }
+        else if (player.getOpponentPlayer() == 2) {
+            klockisTool();
+        }
+        else if (player.getOpponentPlayer() == 3) {
+            namnisTool(player);
+        }
+    }
+
+    public void slumpisTool() {
         Random random = new Random();
         int choice = random.nextInt(3); // 0 for Rock, 1 for Paper, 2 for Scissors
 
@@ -30,6 +43,14 @@ public class ComputerTool {
         } else {
             currentState = new ScissorsState();
         }
+    }
+
+    public void klockisTool() {
+
+    }
+
+    public void namnisTool(Player player) {
+
     }
 
 

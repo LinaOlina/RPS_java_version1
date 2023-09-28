@@ -2,6 +2,7 @@ package org.example.classes;
 
 public class Builder {
 
+    public int opponentPlayer;
     String name;
     int rounds;
     int userScore;
@@ -18,6 +19,10 @@ public class Builder {
 
     public  Builder setUserScore(int userScore) {
         this.userScore = userScore;
+        return this;
+    }
+    public Builder setOpponentPlayer(int opponentPlayer) {
+        this.opponentPlayer = opponentPlayer;
         return this;
     }
 

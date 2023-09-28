@@ -18,8 +18,8 @@ public class Computer {
         return ComputerTool.getCurrentState();
     }
 
-    public void setComputerChoice() {
-         computerTool.changeTool();
+    public void setComputerChoice(Player player) {
+         computerTool.changeTool(player);
     }
 
     public int getComputerScore() {
