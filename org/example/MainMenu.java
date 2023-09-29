@@ -19,40 +19,36 @@ public class MainMenu {
     static int round = 0;
 
     public static void runMenu(boolean isNewGame) {
-        System.out.println("Test");
-
-            if (isNewGame) {
-                // If it's a new game, prompt for name, rounds, and opponentPlayer
-                getName();
-                getRounds();
-                getOpponentPlayer();
-            }
-            else if(!isNewGame) {
+        rounds = 0;
 
 
-                getRounds();
-                getOpponentPlayer();
-            }
+        if (isNewGame) {
 
-            String opponent_Player = validateOpponent(opponentPlayer);
+            getName();
+        }
+        getRounds();
+        getOpponentPlayer();
 
-            System.out.println("\n " + name + " VS " + opponent_Player + "! Game starts now. \n");
+        String opponent_Player = validateOpponent(opponentPlayer);
 
-            Player player = new Builder()
-                    .setName(name)
-                    .setRounds(rounds)
-                    .setUserScore(0)
-                    .setOpponentPlayer(opponentPlayer)
-                    .build();
+        System.out.println("\n " + name + " VS " + opponent_Player + "! Game starts now. \n");
+
+        Player player = new Builder()
+                .setName(name)
+                .setRounds(rounds)
+                .setUserScore(0)
+                .setOpponentPlayer(opponentPlayer)
+                .build();
 
 
-            gameLoop(player, isNewGame, round);
+        gameLoop(player, isNewGame, round);
 
     }
 
     public static void getName() {
         boolean correctNameInput = false;
         while (!correctNameInput) {
+            System.out.println("Welcome to Rock Paper Scissors! ");
             System.out.println("Please input your name");
             name = scanner.nextLine();
             try {
@@ -68,7 +64,6 @@ public class MainMenu {
     }
 
     public static void getRounds() {
-
         while (rounds <= 0 || rounds > Game.maxRounds) {
             try {
                 System.out.println("Please choose how many rounds you'd like to play - maximum of " + Game.maxRounds);
@@ -120,18 +115,17 @@ public class MainMenu {
 
     public static void playAgain(boolean isNewGame, Player player) {
 
-            System.out.println("Press 1 to play again or type 'quit' to exit:");
-            String userInput = scanner.nextLine().trim();
+        System.out.println("Press 1 to play again or type 'quit' to exit:");
+        String userInput = scanner.nextLine().trim();
 
-            if ("quit".equalsIgnoreCase(userInput)) {
-                System.exit(0);
-            } else if ("1".equals(userInput)) {
-                isNewGame = false;
-            } else {
-                System.out.println("Invalid input. Please enter '1' to play again or 'quit' to exit.");
-            }
-        System.out.println("The value of the boolean is : " + isNewGame);
-            opponentPlayer = 0;
+        if ("quit".equalsIgnoreCase(userInput)) {
+            System.exit(0);
+        } else if ("1".equals(userInput)) {
+            isNewGame = false;
+        } else {
+            System.out.println("Invalid input. Please enter '1' to play again or 'quit' to exit.");
+        }
+        opponentPlayer = 0;
 
         runMenu(isNewGame);
     }
