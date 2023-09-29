@@ -35,7 +35,7 @@ public class Game {
         this.gameHistoryList = gameHistoryList;
     }
 
-    public static void gameLoop(@NotNull Player player, boolean isNewGame, int round)  {
+    public static void gameLoop(@NotNull Player player, boolean isNewGame, int round, int opponentPlayer)  {
 
         /*
         if (!isNewGame && player.getRounds() <= round){
@@ -46,26 +46,26 @@ public class Game {
 
 
         if (round == player.getRounds()){
-            printWinner(player, isNewGame, round);
+            printWinner(player, isNewGame, round, opponentPlayer);
 
         } else {
             round++;
             System.out.println("Round " + round + " of " + player.getRounds() + "\n Choose your tool : \n 1. Rock \n 2. Paper \n 3. Scissors \n 4. Exit the game");
             playerChoice = scanner.nextInt();
-            evaluateRound(playerChoice, player, isNewGame, round);
+            evaluateRound(playerChoice, player, isNewGame, round, opponentPlayer);
         }
     }
 
-    public static void evaluateRound(int playerChoice, Player player, boolean isNewGame, int round) {
+    public static void evaluateRound(int playerChoice, Player player, boolean isNewGame, int round, int opponentPlayer) {
         switch (playerChoice) {
             case 1:
-                playerChoosedRock(player, isNewGame, round);
+                playerChoosedRock(player, isNewGame, round, opponentPlayer);
                 break;
             case 2:
-                playerChoosedPaper(player, isNewGame, round);
+                playerChoosedPaper(player, isNewGame, round, opponentPlayer);
                 break;
             case 3:
-                playerChoosedScissors(player, isNewGame, round);
+                playerChoosedScissors(player, isNewGame, round, opponentPlayer);
                 break;
             case 4:
                 System.exit(0);
@@ -73,7 +73,7 @@ public class Game {
     }
 
 
-    public static void playerChoosedRock(Player player, boolean isNewGame, int round) {
+    public static void playerChoosedRock(Player player, boolean isNewGame, int round, int opponentPlayer) {
 
         computer.setComputerChoice(player);
         ToolState computerChoice = computer.getComputerChoice();
@@ -94,10 +94,10 @@ public class Game {
         printScore(player);
         GameHistory gameHistory = new GameHistory(round, player.getName(), computerChoice, "Rock", player.getUserScore(), computer.getComputerScore());
         gameHistoryList.add(gameHistory);
-        gameLoop(player, isNewGame, round);
+        gameLoop(player, isNewGame, round, opponentPlayer);
     }
 
-    public static void playerChoosedPaper(Player player, boolean isNewGame, int round) {
+    public static void playerChoosedPaper(Player player, boolean isNewGame, int round, int opponentPlayer) {
 
         computer.setComputerChoice(player);
         ToolState computerChoice = computer.getComputerChoice();
@@ -117,10 +117,10 @@ public class Game {
         printScore(player);
         GameHistory gameHistory = new GameHistory(round, player.getName(), computerChoice, "Paper", player.getUserScore(), computer.getComputerScore());
         gameHistoryList.add(gameHistory);
-        gameLoop(player, isNewGame, round);
+        gameLoop(player, isNewGame, round, opponentPlayer);
     }
 
-    public static void playerChoosedScissors(Player player, boolean isNewGame, int round) {
+    public static void playerChoosedScissors(Player player, boolean isNewGame, int round, int opponentPlayer) {
 
         computer.setComputerChoice(player);
         ToolState computerChoice = computer.getComputerChoice();
@@ -140,7 +140,7 @@ public class Game {
         printScore(player);
         GameHistory gameHistory = new GameHistory(round, player.getName(), computerChoice, "Scissors", player.getUserScore(), computer.getComputerScore());
         gameHistoryList.add(gameHistory);
-        gameLoop(player, isNewGame, round);
+        gameLoop(player, isNewGame, round, opponentPlayer);
     }
 
     public int getMaxScore() {
@@ -158,13 +158,13 @@ public class Game {
         System.out.println();
     }
 
-    public static void printWinner(Player player, boolean isNewGame, int round){
+    public static void printWinner(Player player, boolean isNewGame, int round, int opponentPlayer){
 
         if (player.getUserScore() == computer.getComputerScore()){
             System.out.println("It's a tie, you get one more chance to win!");
             System.out.println(player.getName() + " has " + player.getUserScore() + " points | Computer has " + computer.getComputerScore()+ " points");
             player.setRounds(player.getRounds() + 1);
-            gameLoop(player, isNewGame, round);
+            gameLoop(player, isNewGame, round, opponentPlayer);
         } else if (player.getUserScore() > computer.getComputerScore()) {
             player.setUserScore(player.getUserScore() + 1);
             System.out.println("You win!!");
@@ -174,7 +174,7 @@ public class Game {
         else {
             computer.setComputerScore(computer.getComputerScore() + 1);
         }
-        GameHistory.printGameHistory();
+        GameHistory.printGameHistory(opponentPlayer);
         //StatisticsCalculations.calculateWinner();
 
         MainMenu.playAgain(isNewGame, player, computer);

@@ -40,7 +40,7 @@ public class MainMenu {
                 .build();
 
 
-        gameLoop(player, isNewGame, round);
+        gameLoop(player, isNewGame, round, opponentPlayer);
 
     }
 

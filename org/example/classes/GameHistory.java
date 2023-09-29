@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
+import static org.example.MainMenu.validateOpponent;
 import static org.example.classes.Game.gameHistoryList;
 
 public class GameHistory {
@@ -101,7 +102,7 @@ public class GameHistory {
         this.history_computerScore = getHistory_computerScore;
     }
 
-    public static void printGameHistory() {
+    public static void printGameHistory(int opponentPlayer) {
 
 
         for (GameHistory round : gameHistoryList) {
@@ -133,7 +134,7 @@ public class GameHistory {
             }
 
             System.out.println("Round " + round.history_roundNo + " - " + round.history_playerName + " : " + round.history_playerScore + " | " +
-                    "Computer: " + round.history_computerScore);
+                    validateOpponent(opponentPlayer) + ": " + round.history_computerScore);
 
 
         });
