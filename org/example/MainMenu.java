@@ -39,6 +39,7 @@ public class MainMenu {
                 .setOpponentPlayer(opponentPlayer)
                 .build();
 
+        computer.setComputerScore(0);
 
         gameLoop(player, isNewGame, round, opponentPlayer);
 

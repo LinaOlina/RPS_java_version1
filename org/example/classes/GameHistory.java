@@ -134,7 +134,7 @@ public class GameHistory {
             }
 
             System.out.println("Round " + round.history_roundNo + " - " + round.history_playerName + " : " + round.history_playerScore + " | " +
-                    validateOpponent(opponentPlayer) + ": " + round.history_computerScore);
+                     "Computer: " + round.history_computerScore);
 
 
         });
@@ -143,3 +143,5 @@ public class GameHistory {
     }
 
 }
+
+//validateOpponent(opponentPlayer)
