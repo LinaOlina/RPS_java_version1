@@ -31,19 +31,8 @@ public class GameHistory {
         this.history_playerChoice = history_playerChoice;
         this.history_playerScore = history_playerScore;
         this.history_computerScore = history_computerScore;
-        //this.history_matchNumber = history_matchNumber;
-
-    }
-/*
-    public int getHistory_matchNumber() {
-        return history_matchNumber;
     }
 
-    public void setHistory_matchNumber(int history_matchNumber) {
-        this.history_matchNumber = history_matchNumber;
-    }
-
- */
 
     public int getHistory_roundNo() {
         return history_roundNo;
@@ -102,7 +91,7 @@ public class GameHistory {
         this.history_computerScore = getHistory_computerScore;
     }
 
-    public static void printGameHistory(int opponentPlayer) {
+    public static void printGameHistory(int opponentPlayer, int matchNumber) {
 
 
         for (GameHistory round : gameHistoryList) {
@@ -121,27 +110,22 @@ public class GameHistory {
 
         System.out.println("Final outcome: ");
 
-        AtomicBoolean printDivider = new AtomicBoolean(false); // Initialize an AtomicBoolean to control the divider printing
+        AtomicBoolean printDivider = new AtomicBoolean(false);
 
         sortedGameHistory.forEach(round -> {
             if (round.history_roundNo == 1) {
-                // Set the printDivider flag to true when round.history_roundNo is 1
+
                 printDivider.set(true);
             }
             if (printDivider.get()) {
+                System.out.println("Match number: " + matchNumber);
                 System.out.println("--------------------------------------------");
-                printDivider.set(false); // Reset the printDivider flag after printing the divider
+                printDivider.set(false);
             }
 
             System.out.println("Round " + round.history_roundNo + " - " + round.history_playerName + " : " + round.history_playerScore + " | " +
                      "Computer: " + round.history_computerScore);
 
-
         });
-
-
     }
-
 }
-
-//validateOpponent(opponentPlayer)

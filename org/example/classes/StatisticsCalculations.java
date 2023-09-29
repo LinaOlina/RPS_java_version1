@@ -16,9 +16,9 @@ public class StatisticsCalculations {
     private int playerWinsAgainstNamnis;
     private int totalWinsForPlayer;
 
-    private List<StatisticsCalculations> wins = new ArrayList<>();
+    private int matchNumber;
 
-    public StatisticsCalculations(int slumpisWins, int klockisWins, int namnisWins, int playerWinsAgainstSlumpis, int playerWinsAgainstKlockis, int playerWinsAgainstNamnis, int totalWinsForPlayer) {
+    public StatisticsCalculations(int slumpisWins, int klockisWins, int namnisWins, int playerWinsAgainstSlumpis, int playerWinsAgainstKlockis, int playerWinsAgainstNamnis, int totalWinsForPlayer, int matchNumber) {
         this.slumpisWins = slumpisWins;
         this.klockisWins = klockisWins;
         this.namnisWins = namnisWins;
@@ -26,6 +26,15 @@ public class StatisticsCalculations {
         this.playerWinsAgainstKlockis = playerWinsAgainstKlockis;
         this.playerWinsAgainstNamnis = playerWinsAgainstNamnis;
         this.totalWinsForPlayer = totalWinsForPlayer;
+        this.matchNumber = matchNumber;
+    }
+
+    public int getMatchNumber() {
+        return matchNumber;
+    }
+
+    public void setMatchNumber(int matchNumber) {
+        this.matchNumber = matchNumber;
     }
 
     public int getTotalWinsForPlayer() {
@@ -113,7 +122,7 @@ public class StatisticsCalculations {
         } else if (opponentScore > playerScore && opponentPlayer == 3) {
             setNamnisWins(getNamnisWins()+1);
         }
-
+        setMatchNumber(getMatchNumber()+1);
         System.out.println(statisticsCalculator);
     }
 

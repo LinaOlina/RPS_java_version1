@@ -164,7 +164,7 @@ public class Game {
         else {
             computer.setComputerScore(computer.getComputerScore() + 1);
         }
-        GameHistory.printGameHistory(opponentPlayer);
+        GameHistory.printGameHistory(opponentPlayer, statisticsCalculator.getMatchNumber());
         statisticsCalculator.calculateMatch(player.getUserScore(), computer.getComputerScore(), opponentPlayer, statisticsCalculator);
 
         MainMenu.playAgain(isNewGame, player, computer, statisticsCalculator);

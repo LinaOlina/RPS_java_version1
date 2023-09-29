@@ -8,7 +8,7 @@ public class Main {
     public static boolean isNewGame = true;
     public static void main(String[] args) {
         StatisticsCalculations statisticsCalculator = new StatisticsCalculations
-                (0, 0, 0, 0, 0, 0, 0);
+                (0, 0, 0, 0, 0, 0, 0, 1);
         runMenu(isNewGame, statisticsCalculator);
     }
 
