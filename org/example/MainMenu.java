@@ -1,14 +1,13 @@
 package org.example;
 
-import org.example.classes.Builder;
-import org.example.classes.Game;
-import org.example.classes.GameHistory;
-import org.example.classes.Player;
+import org.example.classes.*;
 
+import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static org.example.Main.isNewGame;
+
 import static org.example.classes.Game.gameLoop;
 
 public class MainMenu {
@@ -113,7 +112,21 @@ public class MainMenu {
         return opponent;
     }
 
-    public static void playAgain(boolean isNewGame, Player player) {
+    public static void playAgain(boolean isNewGame, Player player, Computer computer) {
+        /*
+        if (opponentPlayer == 1){
+            StatisticsCalculations.calculateSlumpisWins(player.getUserScore(), computer.getComputerScore());
+        } else if(opponentPlayer == 2) {
+            StatisticsCalculations.calculateKlockisWins(player.getUserScore(), computer.getComputerScore());
+        } else {
+            StatisticsCalculations.calculateNamnisWins(player.getUserScore(), computer.getComputerScore());
+        }
+
+         */
+
+
+
+        StatisticsCalculations.calculateMatch(player.getUserScore(), computer.getComputerScore(), opponentPlayer);
 
         System.out.println("Press 1 to play again or type 'quit' to exit:");
         String userInput = scanner.nextLine().trim();
@@ -125,6 +138,8 @@ public class MainMenu {
         } else {
             System.out.println("Invalid input. Please enter '1' to play again or 'quit' to exit.");
         }
+
+
         opponentPlayer = 0;
 
         runMenu(isNewGame);

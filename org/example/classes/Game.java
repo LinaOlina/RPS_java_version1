@@ -25,6 +25,7 @@ public class Game {
     static Computer computer = new Computer( 0);
     public static List<GameHistory> gameHistoryList = new ArrayList<>();
 
+
    // static int round = 0;
 
     public Game(int maxRounds, Scanner scanner,  Computer computer, List<GameHistory> gameHistoryList) {
@@ -174,6 +175,8 @@ public class Game {
             computer.setComputerScore(computer.getComputerScore() + 1);
         }
         GameHistory.printGameHistory();
-        MainMenu.playAgain(isNewGame, player);
+        //StatisticsCalculations.calculateWinner();
+
+        MainMenu.playAgain(isNewGame, player, computer);
     }
 }

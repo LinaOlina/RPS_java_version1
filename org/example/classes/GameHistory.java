@@ -5,6 +5,7 @@ import org.example.States.ToolState;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 import static org.example.classes.Game.gameHistoryList;
@@ -17,6 +18,9 @@ public class GameHistory {
     private String history_playerChoice;
     private int history_playerScore;
     private int history_computerScore;
+    private int history_matchNumber;
+
+
 
 
     public GameHistory(int history_roundNo, String history_playerName, ToolState history_computerChoice, String history_playerChoice, int history_playerScore, int history_computerScore) {
@@ -26,7 +30,19 @@ public class GameHistory {
         this.history_playerChoice = history_playerChoice;
         this.history_playerScore = history_playerScore;
         this.history_computerScore = history_computerScore;
+        //this.history_matchNumber = history_matchNumber;
+
     }
+/*
+    public int getHistory_matchNumber() {
+        return history_matchNumber;
+    }
+
+    public void setHistory_matchNumber(int history_matchNumber) {
+        this.history_matchNumber = history_matchNumber;
+    }
+
+ */
 
     public int getHistory_roundNo() {
         return history_roundNo;
@@ -86,7 +102,11 @@ public class GameHistory {
     }
 
     public static void printGameHistory() {
+
+
         for (GameHistory round : gameHistoryList) {
+
+
             System.out.println("ROUND NUMBER: " + round.history_roundNo + " \n -------------- \n" +
                      round.history_playerName +"'s"+
                     " choice: " + round.history_playerChoice +
@@ -98,10 +118,27 @@ public class GameHistory {
                 .sorted(Comparator.comparing(round -> round.history_playerName))
                 .collect(Collectors.toList());
 
-        // Print the sorted results
-        System.out.println("Final outcome \n");
-        sortedGameHistory.forEach(round -> System.out.println("Round " + round.history_roundNo + " - " + round.history_playerName + " : " + round.history_playerScore + " | " +
-                "Computer: " + round.history_computerScore));
+        System.out.println("Final outcome: ");
+
+        AtomicBoolean printDivider = new AtomicBoolean(false); // Initialize an AtomicBoolean to control the divider printing
+
+        sortedGameHistory.forEach(round -> {
+            if (round.history_roundNo == 1) {
+                // Set the printDivider flag to true when round.history_roundNo is 1
+                printDivider.set(true);
+            }
+            if (printDivider.get()) {
+                System.out.println("--------------------------------------------");
+                printDivider.set(false); // Reset the printDivider flag after printing the divider
+            }
+
+            System.out.println("Round " + round.history_roundNo + " - " + round.history_playerName + " : " + round.history_playerScore + " | " +
+                    "Computer: " + round.history_computerScore);
+
+
+        });
+
+
     }
 
 }
