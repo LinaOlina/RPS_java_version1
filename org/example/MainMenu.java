@@ -39,9 +39,11 @@ public class MainMenu {
                 .setOpponentPlayer(opponentPlayer)
                 .build();
 
-        computer.setComputerScore(0);
+        Computer computer = new Computer( 0);
 
-        gameLoop(player, isNewGame, round, opponentPlayer);
+        //computer.setComputerScore(0);
+
+        gameLoop(player, isNewGame, round, opponentPlayer, computer);
 
     }
 
@@ -114,20 +116,8 @@ public class MainMenu {
     }
 
     public static void playAgain(boolean isNewGame, Player player, Computer computer) {
-        /*
-        if (opponentPlayer == 1){
-            StatisticsCalculations.calculateSlumpisWins(player.getUserScore(), computer.getComputerScore());
-        } else if(opponentPlayer == 2) {
-            StatisticsCalculations.calculateKlockisWins(player.getUserScore(), computer.getComputerScore());
-        } else {
-            StatisticsCalculations.calculateNamnisWins(player.getUserScore(), computer.getComputerScore());
-        }
 
-         */
-
-
-
-        StatisticsCalculations.calculateMatch(player.getUserScore(), computer.getComputerScore(), opponentPlayer);
+        //StatisticsCalculations.calculateMatch(player.getUserScore(), computer.getComputerScore(), opponentPlayer);
 
         System.out.println("Press 1 to play again or type 'quit' to exit:");
         String userInput = scanner.nextLine().trim();
@@ -139,7 +129,6 @@ public class MainMenu {
         } else {
             System.out.println("Invalid input. Please enter '1' to play again or 'quit' to exit.");
         }
-
 
         opponentPlayer = 0;
 
