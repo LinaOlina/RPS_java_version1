@@ -17,12 +17,11 @@ public class MainMenu {
     static int opponentPlayer = 0;
     static int round = 0;
 
-    public static void runMenu(boolean isNewGame) {
+    public static void runMenu(boolean isNewGame, StatisticsCalculations statisticsCalculator) {
         rounds = 0;
 
 
         if (isNewGame) {
-
             getName();
         }
         getRounds();
@@ -41,9 +40,7 @@ public class MainMenu {
 
         Computer computer = new Computer( 0);
 
-        //computer.setComputerScore(0);
-
-        gameLoop(player, isNewGame, round, opponentPlayer, computer);
+        gameLoop(player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
 
     }
 
@@ -115,7 +112,7 @@ public class MainMenu {
         return opponent;
     }
 
-    public static void playAgain(boolean isNewGame, Player player, Computer computer) {
+    public static void playAgain(boolean isNewGame, Player player, Computer computer, StatisticsCalculations statisticsCalculator) {
 
         //StatisticsCalculations.calculateMatch(player.getUserScore(), computer.getComputerScore(), opponentPlayer);
 
@@ -132,6 +129,6 @@ public class MainMenu {
 
         opponentPlayer = 0;
 
-        runMenu(isNewGame);
+        runMenu(isNewGame, statisticsCalculator);
     }
 }

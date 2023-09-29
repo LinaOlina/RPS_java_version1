@@ -1,6 +1,8 @@
 package org.example.classes;
 
 
+import com.sun.security.jgss.GSSUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,17 +14,26 @@ public class StatisticsCalculations {
     private int playerWinsAgainstSlumpis;
     private int playerWinsAgainstKlockis;
     private int playerWinsAgainstNamnis;
-
+    private int totalWinsForPlayer;
 
     private List<StatisticsCalculations> wins = new ArrayList<>();
 
-    public StatisticsCalculations(int slumpisWins, int klockisWins, int namnisWins, int playerWinsAgainstSlumpis, int playerWinsAgainstKlockis, int playerWinsAgainstNamnis) {
+    public StatisticsCalculations(int slumpisWins, int klockisWins, int namnisWins, int playerWinsAgainstSlumpis, int playerWinsAgainstKlockis, int playerWinsAgainstNamnis, int totalWinsForPlayer) {
         this.slumpisWins = slumpisWins;
         this.klockisWins = klockisWins;
         this.namnisWins = namnisWins;
         this.playerWinsAgainstSlumpis = playerWinsAgainstSlumpis;
         this.playerWinsAgainstKlockis = playerWinsAgainstKlockis;
         this.playerWinsAgainstNamnis = playerWinsAgainstNamnis;
+        this.totalWinsForPlayer = totalWinsForPlayer;
+    }
+
+    public int getTotalWinsForPlayer() {
+        return totalWinsForPlayer;
+    }
+
+    public void setTotalWinsForPlayer(int totalWinsForPlayer) {
+        this.totalWinsForPlayer = totalWinsForPlayer;
     }
 
     public int getSlumpisWins() {
@@ -73,51 +84,37 @@ public class StatisticsCalculations {
         this.playerWinsAgainstNamnis = playerWinsAgainstNamnis;
     }
 
-    public static void calculatePlayerWins(int a, int b){
-
-        System.out.println("Player wins Test!!!");
-
-    }
-    public static void calculateSlumpisWins(int a, int b){
-
-        System.out.println("Slumpis wins Test!!!");
-
-    }
-    public static void calculateNamnisWins(int a, int b){
-
-        System.out.println("Namnis wins Test!!!");
-
-    }
-    public static void calculateKlockisWins(int a, int b){
-
-        System.out.println("Klockis wins Test!!!");
-
+    @Override
+    public String toString() {
+        return "Slumpis Wins: " + slumpisWins + "\n" +
+                "Klockis Wins: " + klockisWins + "\n" +
+                "Namnis Wins: " + namnisWins + "\n" +
+                "Player Wins Against Slumpis: " + playerWinsAgainstSlumpis + "\n" +
+                "Player Wins Against Klockis: " + playerWinsAgainstKlockis + "\n" +
+                "Player Wins Against Namnis: " + playerWinsAgainstNamnis + "\n" +
+                "Total Wins for Player: " + totalWinsForPlayer;
     }
 
-    public static void calculateMatch(int playerScore, int opponantScore, int opponentPlayer){
-        if (playerScore > opponantScore && opponentPlayer == 1){
-            //Spelare har vunnit mot slumpis
-            StatisticsCalculations statisticsCalculator = new StatisticsCalculations(0, 0, 0, 1, 0, 0);
-        } else if (playerScore > opponantScore && opponentPlayer == 2){
-            //Spelare har vunnit mot Klockis
-            StatisticsCalculations statisticsCalculator = new StatisticsCalculations(0, 0, 0, 0, 1, 0);
-        } else if (playerScore > opponantScore && opponentPlayer == 3){
-            //Spelare har vunnit mot Namnis
-            StatisticsCalculations statisticsCalculator = new StatisticsCalculations(0, 0, 0, 0, 0, 1);
+    public void calculateMatch(int playerScore, int opponentScore, int opponentPlayer, StatisticsCalculations statisticsCalculator) {
 
-        } else if(opponantScore > playerScore && opponentPlayer == 1){
-            //Slumpis har vunnit mot player
-            StatisticsCalculations statisticsCalculator = new StatisticsCalculations(1, 0, 0, 0, 0, 0);
-
-        } else if (opponantScore > playerScore && opponentPlayer == 2){
-            //Klockis har vunnit mot spelare
-            StatisticsCalculations statisticsCalculator = new StatisticsCalculations(0, 1, 0, 0, 0, 0);
-
-        } else if (opponantScore > playerScore && opponentPlayer == 3) {
-            //Namnis har vunnit mot spelare
-            StatisticsCalculations statisticsCalculator = new StatisticsCalculations(0, 0, 1, 0, 0, 0);
-
+        if (playerScore > opponentScore && opponentPlayer == 1) {
+            setTotalWinsForPlayer(getTotalWinsForPlayer()+1);
+            setPlayerWinsAgainstSlumpis(getPlayerWinsAgainstSlumpis()+1);
+        } else if (playerScore > opponentScore && opponentPlayer == 2) {
+            setTotalWinsForPlayer(getTotalWinsForPlayer()+1);
+            setPlayerWinsAgainstKlockis(getPlayerWinsAgainstKlockis()+1);
+        } else if (playerScore > opponentScore && opponentPlayer == 3) {
+            setTotalWinsForPlayer(getTotalWinsForPlayer()+1);
+            setPlayerWinsAgainstNamnis(getPlayerWinsAgainstNamnis()+1);
+        } else if (opponentScore > playerScore && opponentPlayer == 1) {
+            setSlumpisWins(getSlumpisWins()+1);
+        } else if (opponentScore > playerScore && opponentPlayer == 2) {
+            setKlockisWins(getKlockisWins()+1);
+        } else if (opponentScore > playerScore && opponentPlayer == 3) {
+            setNamnisWins(getNamnisWins()+1);
         }
+
+        System.out.println(statisticsCalculator);
     }
 
 }
