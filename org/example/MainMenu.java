@@ -112,7 +112,7 @@ public class MainMenu {
         return opponent;
     }
 
-    public static void playAgain(boolean isNewGame, StatisticsCalculations statisticsCalculator) {
+    public static void playAgain(boolean isNewGame, StatisticsCalculations statisticsCalculator, Player player) {
 
         System.out.println("Press 1 to show statistics, 2 to play again or type 'quit' to exit:");
         String userInput = scanner.nextLine().trim();
@@ -120,7 +120,7 @@ public class MainMenu {
         if ("quit".equalsIgnoreCase(userInput)) {
             System.exit(0);
         } else if ("1".equals(userInput)) {
-            statisticsCalculator.showStatistics(statisticsCalculator, isNewGame);
+            statisticsCalculator.showStatistics(statisticsCalculator, isNewGame, player);
         } else if ("2".equals(userInput)) {
             isNewGame = false;
         } else {

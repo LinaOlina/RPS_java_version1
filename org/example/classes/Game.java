@@ -171,6 +171,6 @@ public class Game {
         GameHistory.printGameHistory(opponentPlayer);
         statisticsCalculator.calculateMatch(player.getUserScore(), computer.getComputerScore(), opponentPlayer, statisticsCalculator);
 
-        MainMenu.playAgain(isNewGame, statisticsCalculator);
+        MainMenu.playAgain(isNewGame, statisticsCalculator, player);
     }
 }
