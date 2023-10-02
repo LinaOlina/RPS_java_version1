@@ -25,6 +25,9 @@ public class Game {
     public static List<GameHistory> gameHistoryList = new ArrayList<>();
 
 
+
+
+
    // static int round = 0;
 
     public Game(int maxRounds, Scanner scanner,  Computer computer, List<GameHistory> gameHistoryList) {
@@ -150,6 +153,7 @@ public class Game {
 
     public static void printWinner(Player player, boolean isNewGame, int round, int opponentPlayer, Computer computer, StatisticsCalculations statisticsCalculator){
 
+
         if (player.getUserScore() == computer.getComputerScore()){
             System.out.println("It's a tie, you get one more chance to win!");
             System.out.println(player.getName() + " has " + player.getUserScore() + " points | Computer has " + computer.getComputerScore()+ " points");
@@ -164,7 +168,7 @@ public class Game {
         else {
             computer.setComputerScore(computer.getComputerScore() + 1);
         }
-        GameHistory.printGameHistory(opponentPlayer, statisticsCalculator.getMatchNumber());
+        GameHistory.printGameHistory(opponentPlayer);
         statisticsCalculator.calculateMatch(player.getUserScore(), computer.getComputerScore(), opponentPlayer, statisticsCalculator);
 
         MainMenu.playAgain(isNewGame, statisticsCalculator);

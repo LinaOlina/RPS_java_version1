@@ -42,6 +42,8 @@ public class StatisticsCalculations {
         this.matchNumber = matchNumber;
     }
 
+
+
     public int getTotalWinsForPlayer() {
         return totalWinsForPlayer;
     }
@@ -127,7 +129,7 @@ public class StatisticsCalculations {
         } else if (opponentScore > playerScore && opponentPlayer == 3) {
             setNamnisWins(getNamnisWins()+1);
         }
-        setMatchNumber(getMatchNumber()+1);
+        //setMatchNumber(getMatchNumber()+1);
         //System.out.println(statisticsCalculator);
     }
 
