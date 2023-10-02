@@ -19,10 +19,6 @@ public class GameHistory {
     private String history_playerChoice;
     private int history_playerScore;
     private int history_computerScore;
-    private int history_matchNumber;
-
-
-
 
     public GameHistory(int history_roundNo, String history_playerName, ToolState history_computerChoice, String history_playerChoice, int history_playerScore, int history_computerScore) {
         this.history_roundNo = history_roundNo;
@@ -98,12 +94,15 @@ public class GameHistory {
 
         for (GameHistory round : gameHistoryList) {
 
-            System.out.println("ROUND NUMBER: " + round.history_roundNo + " \n -------------- \n" +
+            String computerChoice = round.history_computerChoice.toString();
+            computerChoice = computerChoice.substring(0, computerChoice.length() - "state".length());
+
+            System.out.println(" ROUND NUMBER: " + round.history_roundNo + "\n -------------- \n" +
                      round.history_playerName +"'s"+
                     " choice: " + round.history_playerChoice +
-                    "\n Computer's choice: " + round.history_computerChoice +
-                    " \n " +round.history_playerName+ " score: " + round.history_playerScore +
-                    " - Computer score: " + round.history_computerScore + "\n \n -------------- \n");
+                    "\nComputer's choice: " + computerChoice +
+                    " \n" +round.history_playerName+ " score: " + round.history_playerScore +
+                    " - Computer score: " + round.history_computerScore + "\n ");
         }
         List<GameHistory> sortedGameHistory = gameHistoryList.stream()
                 .sorted(Comparator.comparing(round -> round.history_playerName))
