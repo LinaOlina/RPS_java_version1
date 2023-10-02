@@ -4,6 +4,7 @@ package org.example.classes;
 import com.sun.security.jgss.GSSUtil;
 import org.example.MainMenu;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,9 +101,9 @@ public class StatisticsCalculations {
 
     @Override
     public String toString() {
-        return "Slumpis Wins: " + slumpisWins + "\n" +
-                "Klockis Wins: " + klockisWins + "\n" +
-                "Namnis Wins: " + namnisWins + "\n" +
+        return "Slumpis Wins: " +slumpisWins + "\n" +
+                "Klockis Wins: " + klockisWins  + "\n" +
+                "Namnis Wins: " + namnisWins  + "\n" +
                 "Player Wins Against Slumpis: " + playerWinsAgainstSlumpis + "\n" +
                 "Player Wins Against Klockis: " + playerWinsAgainstKlockis + "\n" +
                 "Player Wins Against Namnis: " + playerWinsAgainstNamnis + "\n" +
@@ -131,19 +132,26 @@ public class StatisticsCalculations {
         //System.out.println(statisticsCalculator);
     }
 
-    public void showStatistics(StatisticsCalculations statisticsCalculator, boolean isNewGame) {
-        /*
-            private int slumpisWins;
-    private int klockisWins;
-    private int namnisWins;
-    private int playerWinsAgainstSlumpis;
-    private int playerWinsAgainstKlockis;
-    private int playerWinsAgainstNamnis;
-    private int totalWinsForPlayer;
-    private int matchNumber;
-         */
-        System.out.println(statisticsCalculator);
-        MainMenu.playAgain(isNewGame, statisticsCalculator);
+    public void showStatistics(StatisticsCalculations statisticsCalculator, boolean isNewGame, Player player) {
+
+        DecimalFormat decimalFormat = new DecimalFormat("0.0");
+
+        double wonGamesForSlumpis = ((double)slumpisWins / (matchNumber-1)) * 100;
+        double wonGamesForKlockis = ((double)klockisWins / (matchNumber-1)) * 100;
+        double wonGamesForNamnis = ((double)namnisWins / (matchNumber-1)) * 100;
+        double playerWonAgainstSlumpis = ((double)playerWinsAgainstSlumpis / (matchNumber-1)) * 100;
+        double playerWonAgainstKlockis = ((double)playerWinsAgainstKlockis / (matchNumber-1)) * 100;
+        double playerWonAgainstNamnis = ((double)playerWinsAgainstNamnis / (matchNumber-1)) * 100;
+        double totalWinsForPlayerPercentage = ((double)totalWinsForPlayer / (matchNumber-1)) * 100;
+
+        System.out.println("Slumpis has won " + decimalFormat.format(wonGamesForSlumpis) + " % of the games.");
+        System.out.println("Namnis has won " + decimalFormat.format(wonGamesForNamnis) + " % of the games.");
+        System.out.println("Klockis has won " + decimalFormat.format(wonGamesForKlockis) + " % of the games.");
+        System.out.println("Player has won " + decimalFormat.format(playerWonAgainstSlumpis) + " % of the games against slumpis.");
+        System.out.println("Player has won " + decimalFormat.format(playerWonAgainstKlockis) + " % of the games against klockis.");
+        System.out.println("Player has won " + decimalFormat.format(playerWonAgainstNamnis) + " % of the games against namnis.");
+        System.out.println("Player has won " + decimalFormat.format(totalWinsForPlayerPercentage) + " % of all games.");
+        MainMenu.playAgain(isNewGame, statisticsCalculator, player);
     }
 
 }
