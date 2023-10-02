@@ -1,12 +1,7 @@
 package org.example.classes;
-
-
-import com.sun.security.jgss.GSSUtil;
 import org.example.MainMenu;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 public class StatisticsCalculations {
 
@@ -29,7 +24,6 @@ public class StatisticsCalculations {
         this.totalWinsForPlayer = totalWinsForPlayer;
         this.matchNumber = matchNumber;
     }
-
 
     public int getMatchNumber() {
         return matchNumber;
@@ -106,7 +100,7 @@ public class StatisticsCalculations {
                 "Total Wins for Player: " + totalWinsForPlayer;
     }
 
-    public void calculateMatch(int playerScore, int opponentScore, int opponentPlayer, StatisticsCalculations statisticsCalculator) {
+    public void calculateMatch(int playerScore, int opponentScore, int opponentPlayer) {
 
         if (playerScore > opponentScore && opponentPlayer == 1) {
             setTotalWinsForPlayer(getTotalWinsForPlayer()+1);

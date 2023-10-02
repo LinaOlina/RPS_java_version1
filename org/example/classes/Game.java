@@ -8,32 +8,20 @@ import org.example.States.ToolState;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
-import static org.example.Main.isNewGame;
-import static org.example.MainMenu.runMenu;
 
 public class Game {
 
     public static int maxRounds = 11;
-    private static int playerChoice = 0;
-
     static Scanner scanner = new Scanner(System.in);
     public static List<GameHistory> gameHistoryList = new ArrayList<>();
 
-
-
-
-
-   // static int round = 0;
-
-    public Game(int maxRounds, Scanner scanner,  Computer computer, List<GameHistory> gameHistoryList) {
-        this.maxRounds = maxRounds;
-        this.scanner = scanner;
-        this.gameHistoryList = gameHistoryList;
+    public Game(int maxRounds, Scanner scanner, List<GameHistory> gameHistoryList) {
+        Game.maxRounds = maxRounds;
+        Game.scanner = scanner;
+        Game.gameHistoryList = gameHistoryList;
     }
 
     public static void gameLoop(@NotNull Player player, boolean isNewGame, int round, int opponentPlayer, Computer computer, StatisticsCalculations statisticsCalculator)  {
@@ -44,27 +32,19 @@ public class Game {
         } else {
             round++;
             System.out.println("Round " + round + " of " + player.getRounds() + "\n Choose your tool : \n 1. Rock \n 2. Paper \n 3. Scissors \n 4. Exit the game");
-            playerChoice = scanner.nextInt();
+            int playerChoice = scanner.nextInt();
             evaluateRound(playerChoice, player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
         }
     }
 
     public static void evaluateRound(int playerChoice, Player player, boolean isNewGame, int round, int opponentPlayer, Computer computer, StatisticsCalculations statisticsCalculator) {
         switch (playerChoice) {
-            case 1:
-                playerChoosedRock(player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
-                break;
-            case 2:
-                playerChoosedPaper(player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
-                break;
-            case 3:
-                playerChoosedScissors(player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
-                break;
-            case 4:
-                System.exit(0);
+            case 1 -> playerChoosedRock(player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
+            case 2 -> playerChoosedPaper(player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
+            case 3 -> playerChoosedScissors(player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
+            case 4 -> System.exit(0);
         }
     }
-
 
     public static void playerChoosedRock(Player player, boolean isNewGame, int round, int opponentPlayer, Computer computer, StatisticsCalculations statisticsCalculator) {
 
@@ -136,14 +116,6 @@ public class Game {
         gameLoop(player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
     }
 
-    public int getMaxScore() {
-        return maxRounds;
-    }
-
-    public void setMaxScore(int maxRounds) {
-        this.maxRounds = maxRounds;
-    }
-
     public static void printScore(Player player, Computer computer){
         System.out.println(player.getName() + " has " + player.getUserScore() + " points | Computer has " + computer.getComputerScore() + " points");
         System.out.println();
@@ -168,8 +140,8 @@ public class Game {
         else {
             computer.setComputerScore(computer.getComputerScore() + 1);
         }
-        GameHistory.printGameHistory(opponentPlayer);
-        statisticsCalculator.calculateMatch(player.getUserScore(), computer.getComputerScore(), opponentPlayer, statisticsCalculator);
+        GameHistory.printGameHistory();
+        statisticsCalculator.calculateMatch(player.getUserScore(), computer.getComputerScore(), opponentPlayer);
 
         MainMenu.playAgain(isNewGame, statisticsCalculator, player);
     }
