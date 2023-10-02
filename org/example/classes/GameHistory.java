@@ -88,7 +88,7 @@ public class GameHistory {
         this.history_computerScore = getHistory_computerScore;
     }
 
-    public static void printGameHistory(int opponentPlayer, int matchNumber) {
+    public static void printGameHistory(int opponentPlayer) {
 
         for (GameHistory round : gameHistoryList) {
 
