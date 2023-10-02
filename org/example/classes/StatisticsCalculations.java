@@ -19,10 +19,6 @@ public class StatisticsCalculations {
     private int totalWinsForPlayer;
     private int matchNumber;
 
-    //List <Integer> matchCounter = new ArrayList<>();
-
-
-
     public StatisticsCalculations(int slumpisWins, int klockisWins, int namnisWins, int playerWinsAgainstSlumpis, int playerWinsAgainstKlockis, int playerWinsAgainstNamnis, int totalWinsForPlayer, int matchNumber) {
         this.slumpisWins = slumpisWins;
         this.klockisWins = klockisWins;
@@ -129,7 +125,6 @@ public class StatisticsCalculations {
             setNamnisWins(getNamnisWins()+1);
         }
         setMatchNumber(getMatchNumber()+1);
-        //System.out.println(statisticsCalculator);
     }
 
     public void showStatistics(StatisticsCalculations statisticsCalculator, boolean isNewGame, Player player) {
