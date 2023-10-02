@@ -93,9 +93,10 @@ public class GameHistory {
 
     public static void printGameHistory(int opponentPlayer, int matchNumber) {
 
+        List <Integer> matchRounds = new ArrayList<>();
+        matchRounds.add(matchNumber);
 
         for (GameHistory round : gameHistoryList) {
-
 
             System.out.println("ROUND NUMBER: " + round.history_roundNo + " \n -------------- \n" +
                      round.history_playerName +"'s"+
@@ -118,7 +119,7 @@ public class GameHistory {
                 printDivider.set(true);
             }
             if (printDivider.get()) {
-                System.out.println("Match number: " + matchNumber);
+                System.out.println("Match number: " + matchRounds.get(matchRounds.size() - 1));
                 System.out.println("--------------------------------------------");
                 printDivider.set(false);
             }

@@ -112,16 +112,16 @@ public class MainMenu {
         return opponent;
     }
 
-    public static void playAgain(boolean isNewGame, Player player, Computer computer, StatisticsCalculations statisticsCalculator) {
+    public static void playAgain(boolean isNewGame, StatisticsCalculations statisticsCalculator) {
 
-        //StatisticsCalculations.calculateMatch(player.getUserScore(), computer.getComputerScore(), opponentPlayer);
-
-        System.out.println("Press 1 to play again or type 'quit' to exit:");
+        System.out.println("Press 1 to show statistics, 2 to play again or type 'quit' to exit:");
         String userInput = scanner.nextLine().trim();
 
         if ("quit".equalsIgnoreCase(userInput)) {
             System.exit(0);
         } else if ("1".equals(userInput)) {
+            statisticsCalculator.showStatistics(statisticsCalculator, isNewGame);
+        } else if ("2".equals(userInput)) {
             isNewGame = false;
         } else {
             System.out.println("Invalid input. Please enter '1' to play again or 'quit' to exit.");

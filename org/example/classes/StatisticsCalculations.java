@@ -2,6 +2,7 @@ package org.example.classes;
 
 
 import com.sun.security.jgss.GSSUtil;
+import org.example.MainMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +16,11 @@ public class StatisticsCalculations {
     private int playerWinsAgainstKlockis;
     private int playerWinsAgainstNamnis;
     private int totalWinsForPlayer;
-
     private int matchNumber;
+
+    //List <Integer> matchCounter = new ArrayList<>();
+
+
 
     public StatisticsCalculations(int slumpisWins, int klockisWins, int namnisWins, int playerWinsAgainstSlumpis, int playerWinsAgainstKlockis, int playerWinsAgainstNamnis, int totalWinsForPlayer, int matchNumber) {
         this.slumpisWins = slumpisWins;
@@ -28,6 +32,7 @@ public class StatisticsCalculations {
         this.totalWinsForPlayer = totalWinsForPlayer;
         this.matchNumber = matchNumber;
     }
+
 
     public int getMatchNumber() {
         return matchNumber;
@@ -123,7 +128,22 @@ public class StatisticsCalculations {
             setNamnisWins(getNamnisWins()+1);
         }
         setMatchNumber(getMatchNumber()+1);
+        //System.out.println(statisticsCalculator);
+    }
+
+    public void showStatistics(StatisticsCalculations statisticsCalculator, boolean isNewGame) {
+        /*
+            private int slumpisWins;
+    private int klockisWins;
+    private int namnisWins;
+    private int playerWinsAgainstSlumpis;
+    private int playerWinsAgainstKlockis;
+    private int playerWinsAgainstNamnis;
+    private int totalWinsForPlayer;
+    private int matchNumber;
+         */
         System.out.println(statisticsCalculator);
+        MainMenu.playAgain(isNewGame, statisticsCalculator);
     }
 
 }
