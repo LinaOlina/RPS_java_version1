@@ -19,7 +19,6 @@ public class GameHistory {
     private String history_playerChoice;
     private int history_playerScore;
     private int history_computerScore;
-    int matchNumber = 1;
 
     public GameHistory(int history_roundNo, String history_playerName, ToolState history_computerChoice, String history_playerChoice, int history_playerScore, int history_computerScore) {
         this.history_roundNo = history_roundNo;
