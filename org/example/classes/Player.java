@@ -6,7 +6,7 @@ public class Player {
     private  int userScore;
     private final int opponentPlayer;
 
-    Player(PlayerBuilder builder) {
+   Player(PlayerBuilder builder) {
         this.name = builder.name;
         this.rounds = builder.rounds;
         this.userScore = builder.userScore;

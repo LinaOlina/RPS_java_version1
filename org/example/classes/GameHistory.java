@@ -15,7 +15,7 @@ public class GameHistory {
     private final int history_playerScore;
     private final int history_computerScore;
 
-    public GameHistory(GameHistoryBuilder builder) {
+    GameHistory(GameHistoryBuilder builder) {
         this.history_roundNo = builder.history_roundNo;
         this.history_playerName = builder.history_playerName;
         this.history_computerChoice = builder.history_computerChoice;
