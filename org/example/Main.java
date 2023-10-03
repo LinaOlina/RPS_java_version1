@@ -1,7 +1,5 @@
 package org.example;
-
 import org.example.classes.StatisticsCalculations;
-
 import static org.example.MainMenu.runMenu;
 
 public class Main {

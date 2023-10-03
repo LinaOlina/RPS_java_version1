@@ -1,6 +1,5 @@
 package org.example.classes;
 import org.example.MainMenu;
-
 import java.text.DecimalFormat;
 
 public class StatisticsCalculations {

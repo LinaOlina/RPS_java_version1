@@ -1,10 +1,8 @@
 package org.example;
 
 import org.example.classes.*;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import static org.example.classes.Game.gameLoop;
 
 public class MainMenu {
