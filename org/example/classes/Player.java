@@ -1,12 +1,12 @@
 package org.example.classes;
 
 public class Player {
-    private  String name;
+    private final String name;
     private  int rounds;
     private  int userScore;
-    private int opponentPlayer;
+    private final int opponentPlayer;
 
-    Player(Builder builder) {
+    Player(PlayerBuilder builder) {
         this.name = builder.name;
         this.rounds = builder.rounds;
         this.userScore = builder.userScore;
@@ -15,10 +15,6 @@ public class Player {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getRounds() {
@@ -38,8 +34,5 @@ public class Player {
     }
     public int getOpponentPlayer() {
         return opponentPlayer;
-    }
-    public void setOpponentPlayer(int opponentPlayer) {
-        this.opponentPlayer = opponentPlayer;
     }
 }

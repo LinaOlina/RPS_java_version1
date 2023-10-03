@@ -15,14 +15,15 @@ public class GameHistory {
     private final int history_playerScore;
     private final int history_computerScore;
 
-    public GameHistory(int history_roundNo, String history_playerName, ToolState history_computerChoice, String history_playerChoice, int history_playerScore, int history_computerScore) {
-        this.history_roundNo = history_roundNo;
-        this.history_playerName = history_playerName;
-        this.history_computerChoice = history_computerChoice;
-        this.history_playerChoice = history_playerChoice;
-        this.history_playerScore = history_playerScore;
-        this.history_computerScore = history_computerScore;
+    public GameHistory(GameHistoryBuilder builder) {
+        this.history_roundNo = builder.history_roundNo;
+        this.history_playerName = builder.history_playerName;
+        this.history_computerChoice = builder.history_computerChoice;
+        this.history_playerChoice = builder.history_playerChoice;
+        this.history_playerScore = builder.history_playerScore;
+        this.history_computerScore = builder.history_computerScore;
     }
+
 
     public static void printGameHistory() {
 

@@ -1,27 +1,27 @@
 package org.example.classes;
 
-public class Builder {
+public class PlayerBuilder {
 
     public int opponentPlayer;
     String name;
     int rounds;
     int userScore;
 
-    public  Builder setName(String name) {
+    public PlayerBuilder setName(String name) {
         this.name = name;
         return this;
     }
 
-    public  Builder setRounds(int rounds) {
+    public PlayerBuilder setRounds(int rounds) {
         this.rounds = rounds;
         return this;
     }
 
-    public  Builder setUserScore(int userScore) {
+    public PlayerBuilder setUserScore(int userScore) {
         this.userScore = userScore;
         return this;
     }
-    public Builder setOpponentPlayer(int opponentPlayer) {
+    public PlayerBuilder setOpponentPlayer(int opponentPlayer) {
         this.opponentPlayer = opponentPlayer;
         return this;
     }

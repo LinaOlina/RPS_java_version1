@@ -63,7 +63,7 @@ public class Game {
         }
 
         printScore(player, computer);
-        GameHistory gameHistory = new GameHistory(round, player.getName(), computerChoice, "Rock", player.getUserScore(), computer.getComputerScore());
+        GameHistory gameHistory = buildGameHistory(round, player.getName(), computerChoice, "Rock", player.getUserScore(), computer.getComputerScore());
         gameHistoryList.add(gameHistory);
         gameLoop(player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
     }
@@ -86,7 +86,7 @@ public class Game {
             computer.setComputerScore(computer.getComputerScore() + 1);
         }
         printScore(player, computer);
-        GameHistory gameHistory = new GameHistory(round, player.getName(), computerChoice, "Paper", player.getUserScore(), computer.getComputerScore());
+        GameHistory gameHistory = buildGameHistory(round, player.getName(), computerChoice, "Paper", player.getUserScore(), computer.getComputerScore());
         gameHistoryList.add(gameHistory);
         gameLoop(player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
     }
@@ -109,11 +109,21 @@ public class Game {
             System.out.println("It's a draw!");
         }
         printScore(player, computer);
-        GameHistory gameHistory = new GameHistory(round, player.getName(), computerChoice, "Scissors", player.getUserScore(), computer.getComputerScore());
+        GameHistory gameHistory = buildGameHistory(round, player.getName(), computerChoice, "Scissors", player.getUserScore(), computer.getComputerScore());
         gameHistoryList.add(gameHistory);
         gameLoop(player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
     }
 
+    public static GameHistory buildGameHistory(int round, String playerName, ToolState computerChoice, String playerChoice, int playerScore, int computerScore) {
+        return new GameHistoryBuilder()
+                .setHistory_roundNo(round)
+                .setHistory_playerName(playerName)
+                .setHistory_computerChoice(computerChoice)
+                .setHistory_playerChoice(playerChoice)
+                .setHistory_playerScore(playerScore)
+                .setHistory_computerScore(computerScore)
+                .build();
+    }
     public static void printScore(Player player, Computer computer){
         System.out.println(player.getName() + " has " + player.getUserScore() + " points | Computer has " + computer.getComputerScore() + " points");
         System.out.println();

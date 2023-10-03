@@ -31,7 +31,7 @@ public class MainMenu {
     }
 
     public static Player buildPlayer(String name, int rounds, int opponentPlayer) {
-        return new Builder()
+        return new PlayerBuilder()
                 .setName(name)
                 .setRounds(rounds)
                 .setUserScore(0)
