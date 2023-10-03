@@ -1,12 +1,10 @@
 package org.example.classes;
-
 import org.example.MainMenu;
 import org.example.States.PaperState;
 import org.example.States.RockState;
 import org.example.States.ScissorsState;
 import org.example.States.ToolState;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -125,7 +123,6 @@ public class Game {
 
     public static void printWinner(Player player, boolean isNewGame, int round, int opponentPlayer, Computer computer, StatisticsCalculations statisticsCalculator){
 
-
         if (player.getUserScore() == computer.getComputerScore()){
             System.out.println("It's a tie, you get one more chance to win!");
             System.out.println(player.getName() + " has " + player.getUserScore() + " points | Computer has " + computer.getComputerScore()+ " points");
@@ -142,7 +139,6 @@ public class Game {
         }
         GameHistory.printGameHistory();
         statisticsCalculator.calculateMatch(player.getUserScore(), computer.getComputerScore(), opponentPlayer);
-
         MainMenu.playAgain(isNewGame, statisticsCalculator, player);
     }
 }

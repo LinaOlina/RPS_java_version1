@@ -6,8 +6,7 @@ public class Computer {
 
     private int computerScore;
 
-    private static ComputerTool computerTool = new ComputerTool();
-
+    private final static ComputerTool computerTool = new ComputerTool();
 
     public Computer(int computerScore) {
         this.computerScore = computerScore;

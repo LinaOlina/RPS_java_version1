@@ -15,6 +15,6 @@ public class ScissorsState implements ToolState {
 
     @Override
     public String toString() {
-        return "ScissorState";
+        return "ScissorsState";
     }
 }

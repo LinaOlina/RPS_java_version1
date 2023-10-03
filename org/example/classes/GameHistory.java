@@ -24,7 +24,6 @@ public class GameHistory {
         this.history_computerScore = history_computerScore;
     }
 
-
     public static void printGameHistory() {
 
         for (GameHistory round : gameHistoryList) {

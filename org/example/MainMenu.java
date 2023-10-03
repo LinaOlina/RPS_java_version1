@@ -2,49 +2,47 @@ package org.example;
 
 import org.example.classes.*;
 
-import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import static org.example.Main.isNewGame;
 
 import static org.example.classes.Game.gameLoop;
 
 public class MainMenu {
     static Scanner scanner = new Scanner(System.in);
-    static String name = ""; // Initialize with an empty name
     static int rounds = 0;
     static int opponentPlayer = 0;
     static int round = 0;
+    static String playerName = "";
 
     public static void runMenu(boolean isNewGame, StatisticsCalculations statisticsCalculator) {
         rounds = 0;
 
-
         if (isNewGame) {
-            getName();
+            playerName = getName();
         }
-        getRounds();
-        getOpponentPlayer();
-
+        int playerRounds =  getRounds();
+        int opponentPlayer = getOpponentPlayer();
         String opponent_Player = validateOpponent(opponentPlayer);
 
-        System.out.println("\n " + name + " VS " + opponent_Player + "! Game starts now. \n");
+        System.out.println("\n " + playerName + " VS " + opponent_Player + "! Game starts now. \n");
 
-        Player player = new Builder()
+        Player player = buildPlayer(playerName, playerRounds, opponentPlayer);
+        Computer computer = new Computer( 0);
+
+        gameLoop(player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
+    }
+
+    public static Player buildPlayer(String name, int rounds, int opponentPlayer) {
+        return new Builder()
                 .setName(name)
                 .setRounds(rounds)
                 .setUserScore(0)
                 .setOpponentPlayer(opponentPlayer)
                 .build();
-
-        Computer computer = new Computer( 0);
-
-        gameLoop(player, isNewGame, round, opponentPlayer, computer, statisticsCalculator);
-
     }
 
-    public static void getName() {
+    public static String getName() {
+        String name = "";
         boolean correctNameInput = false;
         while (!correctNameInput) {
             System.out.println("Welcome to Rock Paper Scissors! ");
@@ -60,9 +58,10 @@ public class MainMenu {
                 System.out.println(e.getMessage());
             }
         }
+        return name;
     }
 
-    public static void getRounds() {
+    public static int getRounds() {
         while (rounds <= 0 || rounds > Game.maxRounds) {
             try {
                 System.out.println("Please choose how many rounds you'd like to play - maximum of " + Game.maxRounds);
@@ -79,9 +78,10 @@ public class MainMenu {
                 System.out.println(e.getMessage());
             }
         }
+        return rounds;
     }
 
-    public static void getOpponentPlayer() {
+    public static int getOpponentPlayer() {
         while (opponentPlayer < 1 || opponentPlayer > 3) {
             try {
                 System.out.println("Please enter the opponent you'd like to meet during this game. \n 1. Slumpis - randomizes its move. \n 2. Klockis - chooses its move based on the clock. \n 3. Namnis - chooses its move based on your name. ");
@@ -98,6 +98,7 @@ public class MainMenu {
                 System.out.println(e.getMessage());
             }
         }
+        return opponentPlayer;
     }
 
     public static String validateOpponent(int opponentPlayer) {
@@ -128,7 +129,6 @@ public class MainMenu {
         }
 
         opponentPlayer = 0;
-
         runMenu(isNewGame, statisticsCalculator);
     }
 }

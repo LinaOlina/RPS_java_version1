@@ -136,10 +136,10 @@ public class StatisticsCalculations {
         System.out.println("Slumpis has won " + decimalFormat.format(wonGamesForSlumpis) + " % of the games.");
         System.out.println("Namnis has won " + decimalFormat.format(wonGamesForNamnis) + " % of the games.");
         System.out.println("Klockis has won " + decimalFormat.format(wonGamesForKlockis) + " % of the games.");
-        System.out.println("Player has won " + decimalFormat.format(playerWonAgainstSlumpis) + " % of the games against slumpis.");
-        System.out.println("Player has won " + decimalFormat.format(playerWonAgainstKlockis) + " % of the games against klockis.");
-        System.out.println("Player has won " + decimalFormat.format(playerWonAgainstNamnis) + " % of the games against namnis.");
-        System.out.println("Player has won " + decimalFormat.format(totalWinsForPlayerPercentage) + " % of all games.");
+        System.out.println(player.getName() + " has won " + decimalFormat.format(playerWonAgainstSlumpis) + " % of the games against slumpis.");
+        System.out.println(player.getName() + " has won " + decimalFormat.format(playerWonAgainstKlockis) + " % of the games against klockis.");
+        System.out.println(player.getName() + " has won " + decimalFormat.format(playerWonAgainstNamnis) + " % of the games against namnis.");
+        System.out.println(player.getName() + " has won " + decimalFormat.format(totalWinsForPlayerPercentage) + " % of all games.");
         MainMenu.playAgain(isNewGame, statisticsCalculator, player);
     }
 
